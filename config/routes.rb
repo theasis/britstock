@@ -9,8 +9,10 @@ Britstock::Application.routes.draw do
   root 'client#index', as: 'client'
 
   get "client/:id", to: "client#show"
+  get "client/istocklightbox/:lbid", to: "client#istocklightbox"
 
   get "photog/:id", to: "client#show"
+  get "client/photog/:id", to: "client#show"
 
   get "location/", to: "client#location"
 

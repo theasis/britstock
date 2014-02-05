@@ -116,3 +116,15 @@ div#list {
     margin-left: 3em;
   }
 }
+img.lb_image {
+ padding: 8px;
+}
+div.lightbox {
+ border: 1px #819b1a dotted;
+ background: #f8fff0;
+ margin-top: 4px;
+ padding: 8px;
+ a:hover {
+  background: #f8fff0;
+ }
+}

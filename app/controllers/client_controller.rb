@@ -17,6 +17,21 @@ class ClientController < ApplicationController
     end
   end
 
+  def istocklightbox
+    require 'xmlrpc/client'
+    # istockapikey is secret
+    eval(File.open('/web/www.theasis.co.uk/BritishStock/britstock/istockapikey').read)
+    sserver="api.istockphoto.com"
+    path="/webservices/xmlrpc/"
+    server = XMLRPC::Client.new3( :host=>sserver, :path=>path, :timeout=>10000)
+    server.http_header_extra = {"accept-encoding" => "identity"}
+    p={"apiKey"=>@apikey,"lightboxID"=>params[:lbid],"perPage"=>100}
+    @images=[]
+    result=server.call("istockphoto.lightbox.listContents",p)
+    result.scan(/fileid="(\d+)"/).each{ |img| @images<<img[0] }
+    @images=@images.sort_by{rand}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photographer

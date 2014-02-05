@@ -11,7 +11,7 @@
      avatar=phtg.image
     end
   %>
- <%= link_to sanitize("<img class='avatar' src='../assets/"+avatar+"' />"), 'photog/'+phtg.id.to_s, class: 'photographer' %>
+ <%= link_to sanitize("<img class='avatar' src='/BritStock/assets/"+avatar+"' />"), 'photog/'+phtg.id.to_s, class: 'photographer' %>
  <h3><%= link_to phtg.name, 'photog/'+phtg.id.to_s, class: 'photographer' %></h3>
  <div class='description'>
   <%= sanitize(phtg.description) %>

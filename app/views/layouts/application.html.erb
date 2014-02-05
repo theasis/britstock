@@ -3,15 +3,23 @@
 <head>
   <link href='http://fonts.googleapis.com/css?family=Paprika|Spinnaker&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <title>British Stock</title>
+  <% if content_for? :for_locationmaps_head %>
+    <%= yield :for_locationmaps_head %>
+  <% end %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <% if content_for? :for_location_head %>
+    <%= yield :for_location_head %>
+  <% end %>
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
  <div id='banner'>
   <%= image_tag('britstock-logo1.png') %>
   <%= @page_title || 'British Stock Photography' %>
-  <div style='font-size:35%; padding-top:16px; font-style:italic;'>Location photography by local photographers available royalty-free from iStock</div>
+  <div style='clear:left; font-size:35%; font-style:italic;'><div>Location photography by local photographers</div>
+<div>Available royalty-free from iStock</div>
+  </div>
  </div>
  <div id='columns'>
   <div id='side'>
@@ -27,5 +35,8 @@
   </div>
  </div>
 
+  <% if content_for? :for_locationmaps_body %>
+    <%= yield :for_locationmaps_body %>
+  <% end %>
 </body>
 </html>
