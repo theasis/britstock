@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Paprika|Spinnaker&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <title>British Stock</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='<%= controller.controller_name %>'>
+ <div id='banner'>
+  <%= image_tag('britstock-logo1.png') %>
+  <%= @page_title || 'British Stock Photography' %>
+  <div style='font-size:35%; padding-top:16px; font-style:italic;'>Location photography by local photographers available royalty-free from iStock</div>
+ </div>
+ <div id='columns'>
+  <div id='side'>
+   <ul>
+    <li><a href='/BritStock/location/'>Locations</a></li>
+    <li><a href='/BritStock/client/index'>Photographers</a></li>
+    <li><a href='/BritStock/photographers/'>Edit Photogs</a></li>
+    <li><a href='/BritStock/lightboxes/'>Edit Lightboxes</a></li>
+   </ul>
+  </div>
+  <div id='main'>
+   <%= yield %>
+  </div>
+ </div>
+
+</body>
+</html>

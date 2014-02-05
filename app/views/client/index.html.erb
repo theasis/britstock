@@ -1,0 +1,20 @@
+<% if notice %>
+<div id='notice'><%= notice %></div>
+<% end %>
+
+<h1>Photographers</h1>
+<% @photographers.each do |phtg| %>
+<div class='entry'>
+ <% 
+    avatar='britstock-logo1.png'
+    if phtg.image && phtg.image.length>1 then
+     avatar=phtg.image
+    end
+  %>
+ <%= link_to sanitize("<img class='avatar' src='../assets/"+avatar+"' />"), 'photog/'+phtg.id.to_s, class: 'photographer' %>
+ <h3><%= link_to phtg.name, 'photog/'+phtg.id.to_s, class: 'photographer' %></h3>
+ <div class='description'>
+  <%= sanitize(phtg.description) %>
+ </div>
+</div>
+<% end %>

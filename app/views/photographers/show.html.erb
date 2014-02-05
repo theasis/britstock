@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @photographer.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @photographer.description %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @photographer.website %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @photographer.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @photographer.email %>
+</p>
+
+<p>
+  <strong>Istock name:</strong>
+  <%= @photographer.istock_name %>
+</p>
+
+<p>
+  <strong>Istock userid:</strong>
+  <%= @photographer.istock_userid %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @photographer.password %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @photographer.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @photographer.country %>
+</p>
+
+<%= link_to 'Edit', edit_photographer_path(@photographer) %> |
+<%= link_to 'Back', photographers_path %>

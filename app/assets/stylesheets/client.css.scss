@@ -1,0 +1,118 @@
+// Place all the styles related to the Client controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#banner {
+  height: 80px;
+  background-image: url('banner-glasgow-20140129-01.jpg');
+  padding: 10px;
+  padding-top: 80px;
+  font-size: 40px;
+  color: #5f5e35;
+  text-align: center;
+
+  img {
+    float: left;
+    margin-top: -50px;
+    opacity: 0.8;
+  }
+}
+#notice {
+  color: #000 !important;
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #e0e0e0;
+  font: bold smaller sans-serif;
+}
+#columns {
+  background: #cbd578;
+
+  #main {
+    margin-left: 13em;
+    padding: 1em;
+    background: white;
+  }
+
+  #side {
+    float: left;
+    padding: 1em 2em;
+    width: 9em;
+    background: #cbd578;
+
+    ul {
+      padding: 0;
+      li {
+        list-style: none;
+        a {
+          color: #66f;
+          font-size: small;
+        }
+      }
+    }
+  }
+}
+.client {
+ font-family: Spinnaker, sans-serif;
+ h1 {
+  margin: 0;
+  padding-bottom: 0.5em;
+  font: 200% Paprika, sans-serif;
+  color: #819b1a;
+  border-bottom: 3px dotted #819b1a;
+ }
+ .entry {
+  overflow: auto;
+  margin-top: 1em;
+  border-bottom: 1px dotted #819b1a;
+  min-height: 150px;
+
+  h3 {
+    font-size: 120%;
+    font-family: Paprika, sans-serif;
+    margin-left: 110px;
+    margin-top: 0;
+    margin-bottom: 2px;
+    color: #819b1a;
+    a.photographer {
+      color: #819b1a;
+    }
+  }
+  img.avatar {
+    float: left;
+  }
+ }
+  div.description {
+    margin-left: 110px;
+  }
+  div.contact {
+    margin-top: 16px;
+    float: right;
+    background-color: #cbd578;
+    padding: 16px;
+  }
+}
+
+h3.infobox {
+    font-size: 120%;
+    font-family: Paprika, sans-serif;
+    margin-top: 0;
+    margin-bottom: 2px;
+    color: #819b1a;
+    a {
+      color: #819b1a;
+    }
+  }
+
+div#list {
+  h3 {
+    padding-left: 1em;
+    font-family: Paprika, sans-serif;
+    color: #819b1a;
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+  a {
+    color: #338;
+    margin-left: 3em;
+  }
+}

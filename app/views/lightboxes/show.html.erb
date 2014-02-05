@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lightbox.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @lightbox.description %>
+</p>
+
+<p>
+  <strong>Photographer:</strong>
+  <%= @lightbox.photographer_id %>
+</p>
+
+<p>
+  <strong>Istockid:</strong>
+  <%= @lightbox.istockid %>
+</p>
+
+<p>
+  <strong>Exampleimage:</strong>
+  <%= @lightbox.exampleimage %>
+</p>
+
+<%= link_to 'Edit', edit_lightbox_path(@lightbox) %> |
+<%= link_to 'Back', lightboxes_path %>

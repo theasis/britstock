@@ -1,0 +1,27 @@
+// Place all the styles related to the Photographers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photographers {
+
+ table {
+  border-collapse: collapse;
+ }
+ table tr td {
+  padding: 5px;
+  vertical-align: top;
+ }
+ .list_image {
+  width: 100px;
+  height: 100px;
+ }
+ .list_description {
+  width: 50%;
+ }
+ .list_line_even {
+  background: #ffffff;
+ }
+ .list_line_odd {
+  background: #f0f0f0;
+ }
+}

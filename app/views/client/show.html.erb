@@ -1,0 +1,39 @@
+<h1><%= @photographer.name %></h1>
+<div class='contact'>
+<table>
+<tr>
+<td>i:</td><td><%= link_to @photographer.istock_name, "http://www.istockphoto.com/user_view.php?id="+@photographer.istock_userid.to_s %></td>
+</tr>
+<% website=@photographer.website; if website && website.length>0 then %>
+<tr>
+<td>w:</td><td>
+<%= website %>
+</td>
+</tr>
+<% end %>
+<tr>
+<td>e:</td><td><%= @photographer.email %></td>
+</tr>
+<% phone=@photographer.phone; if phone &&  phone.length>0 then %>
+<tr>
+<td>t:</td><td>
+<%= phone %>
+</td>
+</tr>
+<% end %>
+</table>
+<%= link_to "iStock portfolio", "http://www.istockphoto.com/search/portfolio/"+@photographer.istock_userid.to_s %>
+</div>
+<h2><%= @photographer.city+', '+@photographer.country %></h2>
+<div class='entry'>
+<img class='avatar' src='../assets/<%= @photographer.image %>' />
+<div class='description'><%= sanitize(@photographer.description) %></div>
+</div>
+<% @lbs.each do |lb| %>
+<div class='lightbox'>
+<div class='lb_name'><%= lb.name %></div>
+<a href='http://www.istockphoto.com/search/lightbox/<%= lb.istockid %>/'>
+<img class='lb_image' src='http://i.istockimg.com/file_thumbview_approve/<%= lb.exampleimage %>/3/stock-photo-<%= lb.exampleimage %>-.jpg' />
+</a>
+</div>
+<% end %>

@@ -1,0 +1,37 @@
+<%= form_for(@lightbox) do |f| %>
+  <% if @lightbox.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lightbox.errors.count, "error") %> prohibited this lightbox from being saved:</h2>
+
+      <ul>
+      <% @lightbox.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :photographer_id %><br>
+    <%= f.number_field :photographer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :istockid %><br>
+    <%= f.number_field :istockid %>
+  </div>
+  <div class="field">
+    <%= f.label :exampleimage %><br>
+    <%= f.number_field :exampleimage %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

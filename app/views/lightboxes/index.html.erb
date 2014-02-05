@@ -1,0 +1,35 @@
+<h1>Listing lightboxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Photographer</th>
+      <th>Istockid</th>
+      <th>Exampleimage</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lightboxes.each do |lightbox| %>
+      <tr>
+        <td><%= lightbox.name %></td>
+        <td><%= lightbox.description %></td>
+        <td><%= lightbox.photographer_id %></td>
+        <td><%= lightbox.istockid %></td>
+        <td><%= lightbox.exampleimage %></td>
+        <td><%= link_to 'Show', lightbox %></td>
+        <td><%= link_to 'Edit', edit_lightbox_path(lightbox) %></td>
+        <td><%= link_to 'Destroy', lightbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lightbox', new_lightbox_path %>

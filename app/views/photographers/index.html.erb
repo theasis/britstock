@@ -1,0 +1,26 @@
+<h1>Photographers</h1>
+
+<table>
+  <tbody>
+    <% @photographers.each do |photographer| %>
+      <tr class='<%= cycle('list_line_odd','list_line_even') %>'>
+        <td><%= photographer.name %>
+        <br><i><%= link_to photographer.istock_name, "http://www.istockphoto.com/user_view.php?id="+(photographer.istock_userid||0).to_s %></i>
+	<br><%= photographer.city+", "+photographer.country %>
+	</td>
+        <td class='list_description'><%= truncate(strip_tags(photographer.description), length:70) %></td>
+        <td>e: <%= photographer.email %>
+        <br>t: <%= photographer.phone %>
+	<br>w: <%= link_to (photographer.website||"No Website"), "http://"+(photographer.website||"istockphoto.com") %>
+        </td>
+        <td><%= link_to 'Show', photographer, class: 'ctlBtn1 short' %>
+        <br><%= link_to 'Edit', edit_photographer_path(photographer), class: 'ctlBtn1 short' %>
+        <br><%= link_to 'Destroy', photographer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ctlBtn1 short' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Photographer', new_photographer_path, class: 'ctlBtn1' %>
