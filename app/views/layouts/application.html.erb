@@ -38,5 +38,8 @@
   <% if content_for? :for_locationmaps_body %>
     <%= yield :for_locationmaps_body %>
   <% end %>
+  <% if content_for? :for_admin %>
+    <%= yield :for_admin %>
+  <% end %>
 </body>
 </html>

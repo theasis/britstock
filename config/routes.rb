@@ -1,4 +1,7 @@
 Britstock::Application.routes.draw do
+  resources :administrators
+
+  get "admin/index"
   get "client/location"
   get "client/show"
   resources :lightboxes
@@ -15,6 +18,9 @@ Britstock::Application.routes.draw do
   get "client/photog/:id", to: "client#show"
 
   get "location/", to: "client#location"
+
+  get "admin/", to: "admin#index"
+  post "admin/new", to: "admin#new"
 
 #  root to: 'photographers#index'
   # The priority is based upon order of creation: first created -> highest priority.
