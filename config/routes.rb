@@ -1,5 +1,6 @@
 Britstock::Application.routes.draw do
   controller :sessions do
+    get 'admin' => :new
     get 'login' => :new
     get 'paypalreturn' => :createpaypal
     post 'login' => :create
@@ -23,8 +24,9 @@ Britstock::Application.routes.draw do
 
   get "location/", to: "client#location"
 
-  get "admin/", to: "admin#index"
-  post "admin/new", to: "admin#new"
+#  get "admin/", to: "admin#index"
+#  post "admin/new", to: "admin#new"
+  get "admindone/", to: "client#done"
 
   get "privacypolicy/", to: "client#location"
   get "useragreement/", to: "client#location"

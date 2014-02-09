@@ -4,6 +4,9 @@ class ClientController < ApplicationController
     @photographers = Photographer.order(:name)
   end
   
+  def done
+  end
+  
   def show
     set_photographer
     set_lightboxes
@@ -50,7 +53,7 @@ class ClientController < ApplicationController
     end
 
     def set_lightboxes
-      @lbs = Lightbox.where(photographer_id: params[:id])
+      @lbs = Lightbox.where(photographer_id: @photographer.id)
     end
 
 end

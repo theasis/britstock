@@ -12,7 +12,8 @@
 
 <p>
   <strong>Photographer:</strong>
-  <%= @lightbox.photographer_id %>
+  <%= @photographers.find(@lightbox.photographer_id).istock_name %>
+  (<%= @lightbox.photographer_id %>)
 </p>
 
 <p>

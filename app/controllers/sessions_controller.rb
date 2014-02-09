@@ -28,11 +28,12 @@ class SessionsController < ApplicationController
     u = Administrator.new(:name => name, :gplus => userid)
     u.save
 
-    redirect_to "/BritStock/location/name:#{name}/userid:#{userid}"
+    redirect_to "/BritStock/admindone"
 
   end
 
   def create
+    eval(File.open('/web/www.theasis.co.uk/BritishStock/britstock/google_config.rb').read)
     user = Administrator.find_by_gplus(params[:gplus])
     if user
       session[:user_id]=user.id

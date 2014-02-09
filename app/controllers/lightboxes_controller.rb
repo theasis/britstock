@@ -5,11 +5,13 @@ class LightboxesController < ApplicationController
   # GET /lightboxes.json
   def index
     @lightboxes = Lightbox.all
+    @photographers = Photographer.all
   end
 
   # GET /lightboxes/1
   # GET /lightboxes/1.json
   def show
+    @photographers = Photographer.all
   end
 
   # GET /lightboxes/new

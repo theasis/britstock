@@ -19,7 +19,7 @@
       <tr>
         <td><%= lightbox.name %></td>
         <td><%= lightbox.description %></td>
-        <td><%= lightbox.photographer_id %></td>
+        <td><%= @photographers.find(lightbox.photographer_id).istock_name %></td>
         <td><%= lightbox.istockid %></td>
         <td><%= lightbox.exampleimage %></td>
         <td><%= link_to 'Show', lightbox %></td>

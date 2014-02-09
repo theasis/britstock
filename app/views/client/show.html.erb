@@ -26,7 +26,7 @@
 </div>
 <h2><%= @photographer.city+', '+@photographer.country %></h2>
 <div class='entry'>
-<img class='avatar' src='/BritStock/assets/<%= @photographer.image %>' />
+<%= image_tag @photographer.avatar.url(:thumb), class: 'avatar' %>
 <div class='description'><%= sanitize(@photographer.description) %></div>
 </div>
 <% @lbs.each do |lb| %>

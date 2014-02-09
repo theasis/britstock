@@ -70,6 +70,6 @@ class PhotographersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photographer_params
-      params.require(:photographer).permit(:name, :description, :website, :phone, :email, :istock_name, :istock_userid, :password, :city, :country, :locationspecifier)
+      params.require(:photographer).permit(:name, :description, :website, :phone, :email, :istock_name, :istock_userid, :password, :city, :country, :locationspecifier, :avatar)
     end
 end

@@ -8,6 +8,14 @@ class Photographer < ActiveRecord::Base
     with: %r{\w\S*@\S*\w\S*\.\S},
     message: 'must be a valid email address.'
   }
+  has_attached_file :avatar, {
+    :styles => { :thumb => "100x128>" },
+    :default_url => "/BritStock/assets/britstock-logo1.png"
+  }
+  validates_attachment_content_type :avatar, :content_type => /image/
+#  validates :avatar, :attachment_presence => true,
+#    :content_type => { :content_type => [ "image/jpeg", "image/gif", "image/png" ] }
+#  validates_with AttachmentPresenceValidator, :attributes => :avatar
   def address
     city+", "+country
   end
