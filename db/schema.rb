@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206142934) do
+ActiveRecord::Schema.define(version: 20140207092103) do
 
   create_table "administrators", force: true do |t|
     t.string   "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140206142934) do
     t.string   "image"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "locationspecifier"
   end
 
 end

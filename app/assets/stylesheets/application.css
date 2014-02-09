@@ -27,3 +27,29 @@ a.ctlBtn1:hover {
 a.ctlBtn1.short {
   padding: 0px 8px;
 }
+#side ul {
+  line-height: 4ex;
+}
+#side a {
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 110%;
+  color: #338;
+  margin: 0.5em;
+  padding: 4px;
+  margin-left: -16px;
+}
+#side a:hover {
+  background: #e8f0ff;
+}
+#who {
+  background: black;
+  color: #c82;
+  padding: 1em;
+}
+#who form, #who div {
+    display: inline;
+}
+#who input {
+  margin-left: 2em;
+}

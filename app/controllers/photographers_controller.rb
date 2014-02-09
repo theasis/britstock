@@ -1,4 +1,5 @@
 class PhotographersController < ApplicationController
+  before_action :authorize
   before_action :set_photographer, only: [:show, :edit, :update, :destroy]
 
   # GET /photographers
@@ -69,6 +70,6 @@ class PhotographersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photographer_params
-      params.require(:photographer).permit(:name, :description, :website, :phone, :email, :istock_name, :istock_userid, :password, :city, :country)
+      params.require(:photographer).permit(:name, :description, :website, :phone, :email, :istock_name, :istock_userid, :password, :city, :country, :locationspecifier)
     end
 end

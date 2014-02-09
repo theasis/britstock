@@ -14,6 +14,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
+ <% if @logged_in_as %>
+    <div id='loggedin'>
+      <div id='who'>Signed in as <%= @logged_in_as %>
+        <%= button_to 'Sign out', logout_path, method: :delete %>
+      </div>
+    </div>
+ <% end %>
  <div id='banner'>
   <%= image_tag('britstock-logo1.png') %>
   <%= @page_title || 'British Stock Photography' %>
@@ -26,8 +33,10 @@
    <ul>
     <li><a href='/BritStock/location/' data-no-turbolink='true'>Locations</a></li>
     <li><a href='/BritStock/client/index'>Photographers</a></li>
+ <% if @logged_in_as %>
     <li><a href='/BritStock/photographers/'>Edit Photogs</a></li>
     <li><a href='/BritStock/lightboxes/'>Edit Lightboxes</a></li>
+ <% end %>
    </ul>
   </div>
   <div id='main'>

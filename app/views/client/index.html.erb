@@ -1,7 +1,3 @@
-<% if notice %>
-<div id='notice'><%= notice %></div>
-<% end %>
-
 <h1>Photographers</h1>
 <% @photographers.each do |phtg| %>
 <div class='entry'>
@@ -11,8 +7,8 @@
      avatar=phtg.image
     end
   %>
- <%= link_to sanitize("<img class='avatar' src='/BritStock/assets/"+avatar+"' />"), 'photog/'+phtg.id.to_s, class: 'photographer' %>
- <h3><%= link_to phtg.name, 'photog/'+phtg.id.to_s, class: 'photographer' %></h3>
+ <%= link_to sanitize("<img class='avatar' src='/BritStock/assets/"+avatar+"' />"), 'photog/'+phtg.istock_name, class: 'photographer' %>
+ <h3><%= link_to phtg.name, 'photog/'+phtg.istock_name, class: 'photographer' %></h3>
  <div class='description'>
   <%= sanitize(phtg.description) %>
  </div>

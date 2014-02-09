@@ -9,13 +9,20 @@
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 <% end %>
 <h1>Location Finder</h1>
-<div style='width: 900px; height: 700px;'>
+<div style='height: 700px; width: 900px;'>
  <div id='map' style='width: 600px; height: 700px; float:left;'>
  </div>
- <div id='list' style='width: 300px; height: 700px; float:right;'>
-  <% @photographers.each do |p| %>
+ <div id='list' style='width: 300px;height: 700px; float:right;'>
+  <%
+    lastcity=""
+    @photographers.each do |p|
+      if p.city!=lastcity then
+        lastcity=p.city
+  %>
   <h3><%= p.city %></h3>
-  <a href='/BritStock/photog/<%= p.id %>'><%= p.name %></a>
+  <% end %>
+  <a href='/BritStock/photog/<%= p.istock_name %>'><span class='nowrap'><%= p.name %></span>, <span class='nowrap'><%= p.city %></span> <span class='nowrap'>(<%= p.locationspecifier %>)</span></a>
+  <br>
   <% end %>
  </div>
 </div>

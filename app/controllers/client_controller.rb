@@ -1,4 +1,5 @@
 class ClientController < ApplicationController
+  skip_before_action :authorize
   def index
     @photographers = Photographer.order(:name)
   end
@@ -10,10 +11,17 @@ class ClientController < ApplicationController
  
   def location
     @photographers = Photographer.order(:city)
-    @hash = Gmaps4rails.build_markers(@photographers) do |phtg, marker|
-      marker.lat phtg.latitude
-      marker.lng phtg.longitude
-      marker.infowindow "<h3 class='infobox'><a href='/BritStock/photog/"+phtg.id.to_s+"'>"+phtg.name+"</a></h3>"+phtg.description
+    @cities = Photographer.select(:city).distinct
+    @hash = Gmaps4rails.build_markers(@cities) do |city, marker|
+      city_photographers=Photographer.where("city='"+city.city+"'")
+      marker.lat city_photographers[0].latitude
+      marker.lng city_photographers[0].longitude
+      photographer_list="<ul class='infobox'>"
+      city_photographers.each do |phtg|
+        photographer_list+="<li><a href='/BritStock/photog/"+phtg.istock_name+"'>"+phtg.name+" (<i>"+phtg.locationspecifier+"</i>)</a></li>"
+      end
+      photographer_list+="</ul>"
+      marker.infowindow "<h3 class='infobox'>#{city.city}</a></h3>"+photographer_list
     end
   end
 
@@ -35,7 +43,7 @@ class ClientController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photographer
-      @photographer = Photographer.find(params[:id])
+      @photographer = Photographer.find_by(istock_name: params[:id])
       if !@photographer.image || @photographer.image.length<2 then
         @photographer.image='britstock-logo1.png'
       end

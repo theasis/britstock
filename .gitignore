@@ -16,3 +16,6 @@
 /tmp
 
 istockapikey
+paypal_config.rb
+google_config.rb
+/config/paypal.yml

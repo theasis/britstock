@@ -34,6 +34,7 @@ end
 
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'paypal-sdk-rest'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

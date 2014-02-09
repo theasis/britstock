@@ -1,4 +1,10 @@
 Britstock::Application.routes.draw do
+  controller :sessions do
+    get 'login' => :new
+    get 'paypalreturn' => :createpaypal
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
   resources :administrators
 
   get "admin/index"
@@ -8,8 +14,6 @@ Britstock::Application.routes.draw do
 
   get "client/index"
   resources :photographers
-
-  root 'client#index', as: 'client'
 
   get "client/:id", to: "client#show"
   get "client/istocklightbox/:lbid", to: "client#istocklightbox"
@@ -21,6 +25,13 @@ Britstock::Application.routes.draw do
 
   get "admin/", to: "admin#index"
   post "admin/new", to: "admin#new"
+
+  get "privacypolicy/", to: "client#location"
+  get "useragreement/", to: "client#location"
+
+  root 'client#location', as: 'locat'
+
+  resource :session
 
 #  root to: 'photographers#index'
   # The priority is based upon order of creation: first created -> highest priority.
