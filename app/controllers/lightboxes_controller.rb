@@ -4,7 +4,7 @@ class LightboxesController < ApplicationController
   # GET /lightboxes
   # GET /lightboxes.json
   def index
-    @lightboxes = Lightbox.all
+    @lightboxes = Lightbox.find(:all, :order => "photographer_id")
     @photographers = Photographer.all
   end
 

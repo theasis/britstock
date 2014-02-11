@@ -10,7 +10,7 @@ class Photographer < ActiveRecord::Base
   }
   has_attached_file :avatar, {
     :styles => { :thumb => "100x128>" },
-    :default_url => "/BritStock/assets/britstock-logo1.png"
+    :default_url => "/assets/britstock-logo1.png"
   }
   validates_attachment_content_type :avatar, :content_type => /image/
 #  validates :avatar, :attachment_presence => true,

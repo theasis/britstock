@@ -5,15 +5,15 @@
   height: 80px;
   background-image: url('banner-glasgow-20140129-01.jpg');
   padding: 10px;
-  padding-top: 80px;
+  padding-top: 50px;
   font-size: 40px;
   color: #5f5e35;
   text-align: center;
 
   img {
     float: left;
-    margin-top: -50px;
-    opacity: 0.8;
+    margin-top: -40px;
+    opacity: 0.9;
   }
 }
 #notice {
@@ -48,7 +48,7 @@
   }
 }
 .client {
- font-family: Spinnaker, sans-serif;
+ font-family: Roboto, sans-serif;
  h1 {
   margin: 0;
   padding-bottom: 0.5em;
@@ -118,8 +118,16 @@ div#list {
   }
   a {
     color: #338;
-    margin-left: 2em;
+    padding-left: 2.5em;
+    text-indent: -1em;
     text-decoration: none;
+    display: block;
+    span.photographername {
+      font-weight: bold;
+    }
+    span.locationspecifier {
+      font-style: italic;
+    }
   }
   a:hover {
     background: #e8f0ff;
@@ -136,7 +144,23 @@ div.lightbox {
  background: #f8fff0;
  margin-top: 4px;
  padding: 8px;
+ width: 800px;
  a:hover {
   background: #f8fff0;
  }
+ section.lbthumb_container {
+    display: block;
+    width: 200px;
+    height: 200px;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    img {
+      margin: auto;
+    }
+ }
+}
+div.lb_name {
+  font-family: Paprika, sans-serif;
+  color: #819b1a;
 }

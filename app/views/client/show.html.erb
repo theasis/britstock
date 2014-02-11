@@ -30,28 +30,49 @@
 <div class='description'><%= sanitize(@photographer.description) %></div>
 </div>
 <% @lbs.each do |lb| %>
-<div class='lightbox'>
-<div class='lb_name'><%= lb.name %></div>
+<div style='height:230px;' class='lightbox'>
+<div class='lb_name'><%= lb.name %><span class='totalitems'></span></div>
 <a href='http://www.istockphoto.com/search/lightbox/<%= lb.istockid %>/'>
-<img data-lightboxid='<%= lb.istockid %>' class='lb_image' src='http://i.istockimg.com/file_thumbview_approve/<%= lb.exampleimage %>/3/stock-photo-<%= lb.exampleimage %>-.jpg' />
+<section class='lbthumb_container cell1'>
+<img data-lightboxid='<%= lb.istockid %>' class='lb_image example_image' src='http://i.istockimg.com/file_thumbview_approve/<%= lb.exampleimage %>/3/stock-photo-<%= lb.exampleimage %>-.jpg' />
+</section>
+<section class='lbthumb_container cell2'>
+<img src='/assets/filmstrip-35mm.gif' alt='loading' title='loading' style='margin-top:20px;' />
+</section>
+<section class='lbthumb_container cell3'></section>
+<section class='lbthumb_container cell4'></section>
 </a>
 </div>
 <% end %>
 <script>
+function updateLightbox(divEl,cellNo,images,pointer,slow) {
+  slow = cellNo==3?true:slow;
+  if (images.length>0) {
+    var imgNo=images[pointer%images.length];
+    var target=$(".cell"+(cellNo%4+1),divEl);
+    var fn=function(){
+      var img=$("<img class='lb_image' src='http://i.istockimg.com/file_thumbview_approve/"+imgNo+"/3/stock-photo-"+imgNo+"-.jpg' />");
+      target.html(img.fadeIn(200));
+    };
+    var targetImg=target.find("img");
+    if (targetImg.length>0) {
+      targetImg.fadeOut(200,fn);
+    } else {
+      fn();
+    }
+    window.setTimeout(function(){updateLightbox(divEl,cellNo+1,images,pointer+1,slow);}, slow?5000:200);
+  }
+}
 $(document).ready( function() {
- $(".lb_image").each( function() {
-  var me=$(this);
-  var target=me.parent();
+ $("div.lightbox").each( function() {
+  var target=$(this);
+  var me=$("img.example_image",target);
   var lbid=me.data('lightboxid');
   $.ajax({
-    url: "/BritStock/client/istocklightbox/"+lbid
+    url: "/client/istocklightbox/"+lbid
   }).done(function(data) {
-    console.log("LB loaded");
-    var html=$(data);
-    $("#main img:lt(4)",html).each(function() {
-      me.remove();
-      target.append($(this));
-    });
+    $("span.totalitems",target).text(" ("+data.totalitems+" images)");
+    updateLightbox(target,0,data.images,0,false);
   });
  });
 });

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href='http://fonts.googleapis.com/css?family=Paprika|Spinnaker&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Paprika|Roboto&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <title>British Stock</title>
   <% if content_for? :for_locationmaps_head %>
     <%= yield :for_locationmaps_head %>
@@ -22,21 +22,29 @@
     </div>
  <% end %>
  <div id='banner'>
-  <%= image_tag('britstock-logo1.png') %>
+  <%= image_tag('focalhero-logo1.png')  %>
   <%= @page_title || 'British Stock Photography' %>
-  <div style='clear:left; font-size:35%; font-style:italic;'><div>Location photography by local photographers</div>
+  <div style='margin-top: 1em; font-size:35%; font-style:italic;'><div>Location photography by local photographers</div>
 <div>Available royalty-free from iStock</div>
   </div>
  </div>
  <div id='columns'>
   <div id='side'>
    <ul>
-    <li><a href='/BritStock/location/' data-no-turbolink='true'>Locations</a></li>
-    <li><a href='/BritStock/client/index'>Photographers</a></li>
+    <li><a href='/location/' data-no-turbolink='true'>Locations</a></li>
+    <li><a href='/client/index'>Photographers</a></li>
  <% if @logged_in_as %>
-    <li><a href='/BritStock/photographers/'>Edit Photogs</a></li>
-    <li><a href='/BritStock/lightboxes/'>Edit Lightboxes</a></li>
+    <li><a href='/photographers/'>Edit Photogs</a></li>
+    <li><a href='/lightboxes/'>Edit Lightboxes</a></li>
  <% end %>
+   </ul>
+   <ul class='secondary'>
+    <li><a href='/about/'>About Us</a></li>
+    <li><a href='/privacypolicy/'>Privacy Policy</a></li>
+    <li><a href='/useragreement/'>User Agreement</a></li>
+    <li><a href='/faq/'>FAQ</a></li>
+    <li><a href='/help/'>Help</a></li>
+    <li><a href='/contact/'>Contact Us</a></li>
    </ul>
   </div>
   <div id='main'>
@@ -44,6 +52,7 @@
   </div>
  </div>
 
+<footer><div>This website is copyright ©2014 Martin McCarthy. iStockphoto®, iStock® are trademarks of iStockphoto LP. Lightbox thumbnail images are the property of the various artists contributing to this website.</div></footer>
   <% if content_for? :for_locationmaps_body %>
     <%= yield :for_locationmaps_body %>
   <% end %>

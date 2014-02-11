@@ -1,6 +1,5 @@
 Britstock::Application.routes.draw do
   controller :sessions do
-    get 'admin' => :new
     get 'login' => :new
     get 'paypalreturn' => :createpaypal
     post 'login' => :create
@@ -8,7 +7,13 @@ Britstock::Application.routes.draw do
   end
   resources :administrators
 
-  get "admin/index"
+  get "about" => "static_pages#about"
+  get "privacypolicy" => "static_pages#privacypolicy"
+  get "useragreement" => "static_pages#useragreement"
+  get "help" => "static_pages#help"
+  get "faq" => "static_pages#faq"
+  get "contact" => "static_pages#contact"
+
   get "client/location"
   get "client/show"
   resources :lightboxes
@@ -28,8 +33,6 @@ Britstock::Application.routes.draw do
 #  post "admin/new", to: "admin#new"
   get "admindone/", to: "client#done"
 
-  get "privacypolicy/", to: "client#location"
-  get "useragreement/", to: "client#location"
 
   root 'client#location', as: 'locat'
 

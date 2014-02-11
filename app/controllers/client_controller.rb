@@ -21,7 +21,7 @@ class ClientController < ApplicationController
       marker.lng city_photographers[0].longitude
       photographer_list="<ul class='infobox'>"
       city_photographers.each do |phtg|
-        photographer_list+="<li><a href='/BritStock/photog/"+phtg.istock_name+"'>"+phtg.name+" (<i>"+phtg.locationspecifier+"</i>)</a></li>"
+        photographer_list+="<li><a href='/photog/"+phtg.istock_name+"'>"+phtg.name+" (<i>"+phtg.locationspecifier+"</i>)</a></li>"
       end
       photographer_list+="</ul>"
       marker.infowindow "<h3 class='infobox'>#{city.city}</a></h3>"+photographer_list
@@ -31,7 +31,7 @@ class ClientController < ApplicationController
   def istocklightbox
     require 'xmlrpc/client'
     # istockapikey is secret
-    eval(File.open('/web/www.theasis.co.uk/BritishStock/britstock/istockapikey').read)
+    eval(File.open('/web/www.focalhero.co.uk/britstock/istockapikey').read)
     sserver="api.istockphoto.com"
     path="/webservices/xmlrpc/"
     server = XMLRPC::Client.new3( :host=>sserver, :path=>path, :timeout=>10000)
@@ -39,8 +39,10 @@ class ClientController < ApplicationController
     p={"apiKey"=>@apikey,"lightboxID"=>params[:lbid],"perPage"=>100}
     @images=[]
     result=server.call("istockphoto.lightbox.listContents",p)
+    result.scan(/totalitems="(\d+)"/).each{ |t| @totalitems=t }
     result.scan(/fileid="(\d+)"/).each{ |img| @images<<img[0] }
     @images=@images.sort_by{rand}
+    render :json => {images:@images,totalitems:@totalitems};
   end
 
   private
