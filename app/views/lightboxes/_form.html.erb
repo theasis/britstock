@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, "Lightbox name" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description, "Lightbox description" %><br>
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :photographer_id %><br>
-    <%= f.number_field :photographer_id %>
+   <%= f.label :photographer_id %><br>
+   <%= f.select :photographer_id, @photographers.map{ |p| [p.istock_name, p.id] } %>
   </div>
   <div class="field">
-    <%= f.label :istockid %><br>
+    <%= f.label :istockid, "iStock Portfolio id" %><br>
     <%= f.number_field :istockid %>
   </div>
   <div class="field">
-    <%= f.label :exampleimage %><br>
+    <%= f.label :exampleimage, "iStock image # for an example image from that Lightbox" %><br>
     <%= f.number_field :exampleimage %>
   </div>
   <div class="actions">

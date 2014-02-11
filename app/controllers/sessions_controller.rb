@@ -9,7 +9,13 @@ class SessionsController < ApplicationController
     require 'paypal-sdk-rest'
     eval(File.open('/web/www.focalhero.co.uk/britstock/paypal_config.rb').read)
     require 'paypal-sdk/core/openid_connect'
-    tokeninfo = PayPal::SDK::OpenIDConnect::Tokeninfo.create(params[:code])
+    begin
+      tokeninfo = PayPal::SDK::OpenIDConnect::Tokeninfo.create(params[:code])
+    rescue PayPal::SDK::Core::Exceptions::BadRequest
+      redirect_to "/location/", alert: "I don't know you!"
+      return
+    end
+
     tokeninfo.refresh
     userinfo = tokeninfo.userinfo
 

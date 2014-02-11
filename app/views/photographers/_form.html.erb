@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, "Real name" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -21,11 +21,11 @@
     <%= image_tag @photographer.avatar.url %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description, "Photographer's bio/descriptive text" %><br>
     <%= f.text_area :description, rows:6 %>
   </div>
   <div class="field">
-    <%= f.label :website %><br>
+    <%= f.label :website, "Website (formatted like: www.mysite.com) - don't include http://" %><br>
     <%= f.text_field :website %>
   </div>
   <div class="field">
@@ -37,16 +37,12 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :istock_name %><br>
+    <%= f.label :istock_name, "iStock Username" %><br>
     <%= f.text_field :istock_name %>
   </div>
   <div class="field">
-    <%= f.label :istock_userid %><br>
+    <%= f.label :istock_userid, "iStock User ID #" %><br>
     <%= f.number_field :istock_userid %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
   </div>
   <div class="field">
     <%= f.label :city %><br>

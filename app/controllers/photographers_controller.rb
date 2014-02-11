@@ -55,6 +55,7 @@ class PhotographersController < ApplicationController
   # DELETE /photographers/1
   # DELETE /photographers/1.json
   def destroy
+    Lightbox.where(photographer_id: @photographer.id).delete_all
     @photographer.destroy
     respond_to do |format|
       format.html { redirect_to photographers_url }

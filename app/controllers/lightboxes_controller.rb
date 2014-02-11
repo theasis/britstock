@@ -17,6 +17,7 @@ class LightboxesController < ApplicationController
   # GET /lightboxes/new
   def new
     @lightbox = Lightbox.new
+    @photographers = Photographer.all
   end
 
   # GET /lightboxes/1/edit
