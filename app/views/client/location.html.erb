@@ -14,14 +14,14 @@
  </div>
  <div id='list' style='width: 300px;height: 700px; float:right;'>
   <%
-    lastcity=""
+    lastregion=""
     @photographers.each do |p|
-      if p.city!=lastcity then
-        lastcity=p.city
+      if p.locationspecifier!=lastregion then
+        lastregion=p.locationspecifier
   %>
-  <h3><%= p.city %></h3>
+  <h3><%= p.locationspecifier %></h3>
   <% end %>
-  <a href='/artist/<%= p.istock_name %>'><span class='nowrap photographername'><%= p.name %></span>, <span class='nowrap location'><%= p.city %></span> <span class='nowrap locationspecifier'>(<%= p.locationspecifier %>)</span></a>
+  <a href='/artist/<%= p.istock_name %>'><span class='nowrap photographername'><%= p.name %></span>, <span class='nowrap location'><%= p.city %></span></a>
   <% end %>
  </div>
 </div>

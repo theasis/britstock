@@ -13,18 +13,19 @@ class ClientController < ApplicationController
   end
  
   def location
-    @photographers = Photographer.order(:city)
+    @photographers = Photographer.order(:locationspecifier)
     @cities = Photographer.select(:city).distinct
-    @hash = Gmaps4rails.build_markers(@cities) do |city, marker|
-      city_photographers=Photographer.where("city='"+city.city+"'")
-      marker.lat city_photographers[0].latitude
-      marker.lng city_photographers[0].longitude
+    @regions = Photographer.select(:locationspecifier).distinct
+    @hash = Gmaps4rails.build_markers(@regions) do |region, marker|
+      region_photographers=Photographer.where("locationspecifier='"+region.locationspecifier+"'")
+      marker.lat region_photographers[0].latitude
+      marker.lng region_photographers[0].longitude
       photographer_list="<ul class='infobox'>"
-      city_photographers.each do |phtg|
-        photographer_list+="<li><a href='/artist/"+phtg.istock_name+"'>"+phtg.name+" (<i>"+phtg.locationspecifier+"</i>)</a></li>"
+      region_photographers.each do |phtg|
+        photographer_list+="<li><a href='/artist/"+phtg.istock_name+"'>"+phtg.name+" (<i>"+phtg.city+"</i>)</a></li>"
       end
       photographer_list+="</ul>"
-      marker.infowindow "<h3 class='infobox'>#{city.city}</a></h3>"+photographer_list
+      marker.infowindow "<h3 class='infobox'>#{region.locationspecifier}</a></h3>"+photographer_list
     end
   end
 
