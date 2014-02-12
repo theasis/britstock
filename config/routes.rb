@@ -1,4 +1,6 @@
 Britstock::Application.routes.draw do
+  resources :caches
+
   controller :sessions do
     get 'login' => :new
     get 'paypalreturn' => :createpaypal
@@ -26,6 +28,7 @@ Britstock::Application.routes.draw do
 
   get "photog/:id", to: "client#show"
   get "client/photog/:id", to: "client#show"
+  get "artist/:id", to: "client#show"
 
   get "location/", to: "client#location"
 

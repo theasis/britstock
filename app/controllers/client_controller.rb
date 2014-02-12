@@ -21,7 +21,7 @@ class ClientController < ApplicationController
       marker.lng city_photographers[0].longitude
       photographer_list="<ul class='infobox'>"
       city_photographers.each do |phtg|
-        photographer_list+="<li><a href='/photog/"+phtg.istock_name+"'>"+phtg.name+" (<i>"+phtg.locationspecifier+"</i>)</a></li>"
+        photographer_list+="<li><a href='/artist/"+phtg.istock_name+"'>"+phtg.name+" (<i>"+phtg.locationspecifier+"</i>)</a></li>"
       end
       photographer_list+="</ul>"
       marker.infowindow "<h3 class='infobox'>#{city.city}</a></h3>"+photographer_list
@@ -29,18 +29,32 @@ class ClientController < ApplicationController
   end
 
   def istocklightbox
-    require 'xmlrpc/client'
-    # istockapikey is secret
-    eval(File.open('/web/www.focalhero.co.uk/britstock/istockapikey').read)
-    sserver="api.istockphoto.com"
-    path="/webservices/xmlrpc/"
-    server = XMLRPC::Client.new3( :host=>sserver, :path=>path, :timeout=>10000)
-    server.http_header_extra = {"accept-encoding" => "identity"}
-    p={"apiKey"=>@apikey,"lightboxID"=>params[:lbid],"perPage"=>100}
-    @images=[]
-    result=server.call("istockphoto.lightbox.listContents",p)
-    result.scan(/totalitems="(\d+)"/).each{ |t| @totalitems=t }
-    result.scan(/fileid="(\d+)"/).each{ |img| @images<<img[0] }
+    oldcache=false
+    cache = Cache.where(:lightbox_id => params[:lbid]).first
+    if(cache)
+      @totalitems=cache.filecount||0
+      @images=cache.filelist
+      oldcache = cache.updated_at < 1.day.ago
+    end
+    if (!cache || oldcache)
+      require 'xmlrpc/client'
+      # istockapikey is secret
+      eval(File.open('/web/www.focalhero.co.uk/britstock/istockapikey').read)
+      sserver="api.istockphoto.com"
+      path="/webservices/xmlrpc/"
+      server = XMLRPC::Client.new3( :host=>sserver, :path=>path, :timeout=>10000)
+      server.http_header_extra = {"accept-encoding" => "identity"}
+      p={"apiKey"=>@apikey,"lightboxID"=>params[:lbid],"perPage"=>100}
+      @images=[]
+      result=server.call("istockphoto.lightbox.listContents",p)
+      result.scan(/totalitems="(\d+)"/).each{ |t| @totalitems=t[0].to_i||0 }
+      result.scan(/fileid="(\d+)"/).each{ |img| @images<<img[0] }
+      cache = Cache.new unless cache
+      cache.filecount=@totalitems
+      cache.filelist=@images
+      cache.lightbox_id=params[:lbid]
+      cache.save
+    end
     @images=@images.sort_by{rand}
     render :json => {images:@images,totalitems:@totalitems};
   end

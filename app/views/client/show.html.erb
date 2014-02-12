@@ -2,12 +2,13 @@
 <div class='contact'>
 <table>
 <tr>
-<td>i:</td><td><%= link_to @photographer.istock_name, "http://www.istockphoto.com/user_view.php?id="+@photographer.istock_userid.to_s %></td>
+<td>i:</td><td><%= link_to @photographer.istock_name, "http://www.istockphoto.com/user_view.php?id="+@photographer.istock_userid.to_s, :title => 'iStock user page' %></td>
 </tr>
 <% website=@photographer.website; if website && website.length>0 then %>
+<%   url=website.starts_with?('http') ? website : 'http://'+website %>
 <tr>
 <td>w:</td><td>
-<%= website %>
+<%= link_to website, url, :title=>'Personal web site' %>
 </td>
 </tr>
 <% end %>

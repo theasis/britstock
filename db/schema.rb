@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209101257) do
+ActiveRecord::Schema.define(version: 20140212133518) do
 
   create_table "administrators", force: true do |t|
     t.string   "name"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20140209101257) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "caches", force: true do |t|
+    t.string   "lightbox_id"
+    t.text     "filelist",    limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "filecount"
   end
 
   create_table "lightboxes", force: true do |t|

@@ -22,6 +22,7 @@ class LightboxesController < ApplicationController
 
   # GET /lightboxes/1/edit
   def edit
+    @photographers = Photographer.all
   end
 
   # POST /lightboxes
