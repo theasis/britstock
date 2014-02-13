@@ -1,0 +1,5 @@
+@paypal_config={
+      :openid_client_id => "your paypal client id here",
+      :openid_client_secret => "your paypal client secret here",
+      :openid_redirect_uri => "your redirect here, eg http://www.example.com/paypalredirect2"
+};

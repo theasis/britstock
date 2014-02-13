@@ -1,0 +1,3 @@
+@google_config={
+  :clientid => "your google API client id here"
+};
