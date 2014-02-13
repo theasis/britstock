@@ -1,5 +1,5 @@
 class Photographer < ActiveRecord::Base
-  geocoded_by :address
+  geocoded_by :specific_location
   after_validation :geocode
   has_many :lightboxes
   validates :name, :description, :email, :istock_name, :istock_userid, :city, :country, :locationspecifier, presence: true
@@ -21,5 +21,8 @@ class Photographer < ActiveRecord::Base
   end
   def specificAddress
     city+"("+locationspecifier+"), "+country
+  end
+  def specific_location
+    locationspecifier+", "+country
   end
 end

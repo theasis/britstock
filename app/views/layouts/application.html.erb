@@ -23,7 +23,8 @@
  <% end %>
  <div id='banner'>
   <%= image_tag('focalhero-logo1.png')  %>
-  <%= @page_title || 'British Stock Photography' %>
+  <div class='upper_heading'><%= 'FOCALHERO' %> </div>
+  <div class='lower_heading'><%= 'British Stock Photography' %> </div>
   <div style='margin-top: 1em; font-size:35%; font-style:italic;'><div>Location photography by local photographers</div>
 <div>Available royalty-free from iStock</div>
   </div>
@@ -42,8 +43,10 @@
     <li><a href='/about/'>About Us</a></li>
     <li><a href='/privacypolicy/'>Privacy Policy</a></li>
     <li><a href='/useragreement/'>User Agreement</a></li>
-    <li><a href='/faq/'>FAQ</a></li>
-    <li><a href='/help/'>Help</a></li>
+ <%
+#   <li><a href='/faq/'>FAQ</a></li>
+#    <li><a href='/help/'>Help</a></li>
+ %>
     <li><a href='/contact/'>Contact Us</a></li>
    </ul>
   </div>

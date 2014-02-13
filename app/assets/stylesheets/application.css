@@ -78,4 +78,19 @@ footer div {
   padding-right: 1em;
   padding-left: 4em;
 }
-
+div.upper_heading {
+  margin-top: -1ex;
+  font-weight: bold;
+  font-size: 80%;
+  color: #844;
+  text-shadow: 0px 0px 4px #fff, 0px 0px 1px #fff;
+}
+div.lower_heading {
+  padding-top: 0.6ex;
+  font-size: 60%;
+  color: #844;
+  text-shadow: 0px 0px 4px #fff, 0px 0px 1px #fff;
+}
+body {
+  margin-bottom: 40px;
+}
