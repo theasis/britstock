@@ -19,3 +19,6 @@ istockapikey
 paypal_config.rb
 google_config.rb
 /config/paypal.yml
+/config/initializers/secret_token.rb
+
+
