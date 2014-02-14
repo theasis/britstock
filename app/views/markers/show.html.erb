@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @marker.label %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @marker.position %>
+</p>
+
+<%= link_to 'Edit', edit_marker_path(@marker) %> |
+<%= link_to 'Back', markers_path %>

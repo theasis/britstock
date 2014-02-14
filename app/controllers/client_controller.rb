@@ -16,10 +16,18 @@ class ClientController < ApplicationController
     @photographers = Photographer.order(:locationspecifier)
     @cities = Photographer.select(:city).distinct
     @regions = Photographer.select(:locationspecifier).distinct
+    markers = Marker.all
+    marker_lookup = Hash[ markers.map{ |m| [m.label,{:lat => m.latitude, :lng => m.longitude}]}]
     @hash = Gmaps4rails.build_markers(@regions) do |region, marker|
       region_photographers=Photographer.where("locationspecifier='"+region.locationspecifier+"'")
-      marker.lat region_photographers[0].latitude
-      marker.lng region_photographers[0].longitude
+      ml=marker_lookup[region_photographers[0].locationspecifier]
+      if ml
+        marker.lat ml[:lat]
+        marker.lng ml[:lng]
+      else
+        marker.lat region_photographers[0].latitude
+        marker.lng region_photographers[0].longitude
+      end
       photographer_list="<ul class='infobox'>"
       region_photographers.each do |phtg|
         photographer_list+="<li><a href='/artist/"+phtg.istock_name+"'>"+phtg.name+" (<i>"+phtg.city+"</i>)</a></li>"

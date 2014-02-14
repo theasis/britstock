@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #banner {
   height: 80px;
-  background-image: url('banner-glasgow-20140129-01.jpg');
+  background-image: image-url('banner-01.jpg');
   padding: 10px;
   padding-top: 50px;
   font-size: 40px;
@@ -79,6 +79,8 @@
  }
   div.description {
     margin-left: 110px;
+    max-width: 710px;
+    padding-right: 10px;
   }
   div.contact {
     margin-top: 16px;

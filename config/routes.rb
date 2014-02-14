@@ -1,13 +1,17 @@
 Britstock::Application.routes.draw do
+  resources :markers
+
   resources :caches
 
   controller :sessions do
     get 'login' => :new
+    get 'login2' => :new2
     get 'paypalreturn' => :createpaypal
     post 'login' => :create
     delete 'logout' => :destroy
   end
   resources :administrators
+  get "paypalredirect2" => "static_pages#help"
 
   get "about" => "static_pages#about"
   get "privacypolicy" => "static_pages#privacypolicy"
@@ -15,6 +19,7 @@ Britstock::Application.routes.draw do
   get "help" => "static_pages#help"
   get "faq" => "static_pages#faq"
   get "contact" => "static_pages#contact"
+  get "success" => "static_pages#success"
 
   get "client/location"
   get "client/show"

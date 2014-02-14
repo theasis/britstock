@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212133518) do
+ActiveRecord::Schema.define(version: 20140214110420) do
 
   create_table "administrators", force: true do |t|
     t.string   "name"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20140212133518) do
   end
 
   add_index "lightboxes", ["photographer_id"], name: "index_lightboxes_on_photographer_id"
+
+  create_table "markers", force: true do |t|
+    t.string   "label"
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
 
   create_table "photographers", force: true do |t|
     t.string   "name"

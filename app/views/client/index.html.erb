@@ -7,7 +7,7 @@
      avatar=phtg.image
     end
   %>
-<%= link_to image_tag( phtg.avatar.url(:thumb), class: 'avatar' ) %>
+<%= link_to image_tag( phtg.avatar.url(:thumb), class: 'avatar' ), '/artist/'+phtg.istock_name %>
  <h3><%= link_to phtg.name, '/artist/'+phtg.istock_name, class: 'photographer' %></h3>
  <div class='description'>
   <%= sanitize(phtg.description) %>
