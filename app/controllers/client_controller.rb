@@ -48,7 +48,7 @@ class ClientController < ApplicationController
     if (!cache || oldcache)
       require 'xmlrpc/client'
       # istockapikey is secret
-      eval(File.open('/web/www.focalhero.co.uk/britstock/istockapikey').read)
+      eval(File.open(Rails.root.join('istockapikey').to_s).read)
       sserver="api.istockphoto.com"
       path="/webservices/xmlrpc/"
       server = XMLRPC::Client.new3( :host=>sserver, :path=>path, :timeout=>10000)

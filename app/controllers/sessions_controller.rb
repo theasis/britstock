@@ -1,20 +1,20 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize
   def new
-    eval(File.open('/web/www.focalhero.co.uk/britstock/google_config.rb').read)
-    eval(File.open('/web/www.focalhero.co.uk/britstock/paypal_config.rb').read)
+    eval(File.open(Rails.root.join('google_config.rb').to_s).read)
+    eval(File.open(Rails.root.join('paypal_config.rb').to_s).read)
   end
 
   def new2
-    eval(File.open('/web/www.focalhero.co.uk/britstock/google_config.rb').read)
-    eval(File.open('/web/www.focalhero.co.uk/britstock/paypal_config.rb').read)
+    eval(File.open(Rails.root.join('google_config.rb').to_s).read)
+    eval(File.open(Rails.root.join('paypal_config.rb').to_s).read)
   end
 
   def createpaypal
     require 'net/http'
     require 'uri'
 #    require 'paypal-sdk-rest'
-    eval(File.open('/web/www.focalhero.co.uk/britstock/paypal_config.rb').read)
+    eval(File.open(Rails.root.join('paypal_config.rb').to_s).read)
  #   require 'paypal-sdk/core/openid_connect'
     tokeninfo=nil
     name=nil
@@ -73,7 +73,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    eval(File.open('/web/www.focalhero.co.uk/britstock/google_config.rb').read)
+    eval(File.open(Rails.root.join('google_config.rb').to_s).read)
     user = Administrator.find_by_gplus(params[:gplus])
     if user
       session[:user_id]=user.id
