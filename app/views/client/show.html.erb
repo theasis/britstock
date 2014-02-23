@@ -2,13 +2,13 @@
 <div class='contact'>
 <table>
 <tr>
-<td>i:</td><td><%= link_to @photographer.istock_name, "http://www.istockphoto.com/user_view.php?id="+@photographer.istock_userid.to_s, :title => 'iStock user page' %></td>
+<td>i:</td><td><%= link_to @photographer.istock_name, "http://www.istockphoto.com/user_view.php?id="+@photographer.istock_userid.to_s, :title => 'iStock user page', :target => 'focalhero_external' %></td>
 </tr>
 <% website=@photographer.website; if website && website.length>0 then %>
 <%   url=website.starts_with?('http') ? website : 'http://'+website %>
 <tr>
 <td>w:</td><td>
-<%= link_to website, url, :title=>'Personal web site' %>
+<%= link_to website, url, :title=>'Personal web site', :target => 'focalhero_external' %>
 </td>
 </tr>
 <% end %>
@@ -23,7 +23,7 @@
 </tr>
 <% end %>
 </table>
-<%= link_to "iStock portfolio", "http://www.istockphoto.com/search/portfolio/"+@photographer.istock_userid.to_s %>
+<%= link_to "iStock portfolio", "http://www.istockphoto.com/search/portfolio/"+@photographer.istock_userid.to_s, :target => 'focalhero_external' %>
 </div>
 <h2><%= @photographer.city+', '+@photographer.country %></h2>
 <div class='entry'>
@@ -33,7 +33,7 @@
 <% @lbs.each do |lb| %>
 <div style='height:230px;' class='lightbox'>
 <div class='lb_name'><%= lb.name %><span class='totalitems'></span></div>
-<a href='http://www.istockphoto.com/search/lightbox/<%= lb.istockid %>/'>
+<a href='http://www.istockphoto.com/search/lightbox/<%= lb.istockid %>/' target='focalhero_external'>
 <section class='lbthumb_container cell1'>
 <img data-lightboxid='<%= lb.istockid %>' class='lb_image example_image' src='http://i.istockimg.com/file_thumbview_approve/<%= lb.exampleimage %>/3/stock-photo-<%= lb.exampleimage %>-.jpg' />
 </section>

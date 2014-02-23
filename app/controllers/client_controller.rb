@@ -37,6 +37,15 @@ class ClientController < ApplicationController
     end
   end
 
+  def location2
+    location
+	@countries = Photographer.select(:country).distinct.order(:country)
+	@per_country = {}
+	@countries.each do |c|
+	  @per_country[c.country] = Photographer.where(country: c.country).order(:locationspecifier)
+	end
+  end
+  
   def istocklightbox
     oldcache=false
     cache = Cache.where(:lightbox_id => params[:lbid]).first
