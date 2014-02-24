@@ -16,10 +16,12 @@ class PhotographersController < ApplicationController
   # GET /photographers/new
   def new
     @photographer = Photographer.new
+    @countries=["England","Northern Ireland","Scotland","Wales","Eire"]
   end
 
   # GET /photographers/1/edit
   def edit
+    @countries=["England","Northern Ireland","Scotland","Wales","Eire"]
   end
 
   # POST /photographers

@@ -13,9 +13,18 @@
  <div id='map' style='width: 600px; height: 700px; float:left;'>
  </div>
  <div id='list' style='width: 300px;height: 700px; float:right;'>
+  <% @per_country.each do |k,v| %>
+  <%  label=k.gsub(" ","_") %>
+  <%  label="NI" if label=="Northern_Ireland" %>
+    <button id='button_country_<%= label %>' class='country' onclick='showCountry("<%= label %>")'><%= label %></button>
+  <% end %>
+  <% @per_country.each do |k,v| %>
+  <%  label=k.gsub(" ","_") %>
+  <%  label="NI" if label=="Northern_Ireland" %>
+    <div id='country_<%= label %>' class='country_div' style='display:none'>
   <%
     lastregion=""
-    @photographers.each do |p|
+    v.each do |p|
       if p.locationspecifier!=lastregion then
         lastregion=p.locationspecifier
   %>
@@ -23,6 +32,9 @@
   <% end %>
   <a href='/artist/<%= p.istock_name %>'><span class='nowrap photographername'><%= p.name %></span>, <span class='nowrap location'><%= p.city %></span></a>
   <% end %>
+  </div>
+  <% end %>
+  </ul>
  <div style='height:40px;'><br> </div>
  </div>
 </div>
@@ -45,3 +57,13 @@ $(document).on('page:load',function() {
 });
 </script>
 <% end %>
+
+<script>
+function showCountry(country) {
+ $("button.country").css({'background-color':'#bbb',color:'#333'});
+ $("#button_country_"+country).css({'background-color':'#666',color:'#ffc'});
+ $("div.country_div").hide(300);
+ $("#country_"+country).show(300);
+}
+showCountry("England");
+</script>

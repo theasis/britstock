@@ -12,7 +12,7 @@ class ClientController < ApplicationController
     set_lightboxes
   end
  
-  def location
+  def pre_location
     @photographers = Photographer.order(:locationspecifier)
     @cities = Photographer.select(:city).distinct
     @regions = Photographer.select(:locationspecifier).distinct
@@ -37,8 +37,8 @@ class ClientController < ApplicationController
     end
   end
 
-  def location2
-    location
+  def location
+    pre_location
 	@countries = Photographer.select(:country).distinct.order(:country)
 	@per_country = {}
 	@countries.each do |c|

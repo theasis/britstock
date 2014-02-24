@@ -54,7 +54,7 @@
   </div>
   <div class="field">
     <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.select :country, options_for_select(@countries,f.object.country) %>
   </div>
   <div class="actions">
     <%= f.submit %>

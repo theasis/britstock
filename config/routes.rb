@@ -22,7 +22,6 @@ Britstock::Application.routes.draw do
   get "success" => "static_pages#success"
 
   get "client/location"
-  get "client/location2"
   get "client/show"
   resources :lightboxes
 
