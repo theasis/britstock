@@ -21,3 +21,18 @@
 
 en:
   hello: "Hello world"
+  global_title: "FOCALHERO"
+  global_subtitle: "British Stock Photography"
+  global_tagline_1: "Location photography by local photographers"
+  global_tagline_2: "Available royalty-free from iStock"
+  global_copyright: "This website is copyright ©2014 Martin McCarthy, Dave White, Roger Whiteway. iStockphoto® and iStock® are trademarks of iStockphoto LP. Lightbox thumbnail images are the property of the various artists contributing to this website."
+  map_title: "Find your local focal hero"
+  locations: "Locations"
+  photographers: "Photographers"
+  edit_photographers: "Edit Photogs"
+  edit_lightboxes: "Edit Lightboxes"
+  edit_markers: "Edit Markers"
+  about_us: "About Us"
+  privacy_policy: "Privacy Policy"
+  user_agreement: "User Agreement"
+  contact_us: "Contact Us"

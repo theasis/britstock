@@ -23,32 +23,32 @@
  <% end %>
  <div id='banner'>
   <%= image_tag('focalhero-logo1.png')  %>
-  <div class='upper_heading'><%= 'FOCALHERO' %> </div>
-  <div class='lower_heading'><%= 'British Stock Photography' %> </div>
-  <div style='margin-top: 1em; font-size:35%; font-style:italic;'><div>Location photography by local photographers</div>
-<div>Available royalty-free from iStock</div>
+  <div class='upper_heading'><%= t :global_title %> </div>
+  <div class='lower_heading'><%= t :global_subtitle %> </div>
+  <div style='margin-top: 1em; font-size:35%; font-style:italic;'><div><%= t :global_tagline_1 %></div>
+<div><%= t :global_tagline_2 %></div>
   </div>
  </div>
  <div id='columns'>
   <div id='side'>
    <ul>
-    <li><a href='/location/' data-no-turbolink='true'>Locations</a></li>
-    <li><a href='/client/index'>Photographers</a></li>
+    <li><a href='/location/' data-no-turbolink='true'><%= t :locations %></a></li>
+    <li><a href='/client/index'><%= t :photographers %></a></li>
  <% if @logged_in_as %>
-    <li><a href='/photographers/'>Edit Photogs</a></li>
-    <li><a href='/lightboxes/'>Edit Lightboxes</a></li>
-    <li><a href='/markers/'>Edit Markers</a></li>
+    <li><a href='/photographers/'><%= t :edit_photographers %></a></li>
+    <li><a href='/lightboxes/'><%= t :edit_lightboxes %></a></li>
+    <li><a href='/markers/'><%= :edit_markers %></a></li>
  <% end %>
    </ul>
    <ul class='secondary'>
-    <li><a href='/about/'>About Us</a></li>
-    <li><a href='/privacypolicy/'>Privacy Policy</a></li>
-    <li><a href='/useragreement/'>User Agreement</a></li>
+    <li><a href='/about/'><%= t :about_us %></a></li>
+    <li><a href='/privacypolicy/'><%= t :privacy_policy %></a></li>
+    <li><a href='/useragreement/'><%= t :user_agreement %></a></li>
  <%
 #   <li><a href='/faq/'>FAQ</a></li>
 #    <li><a href='/help/'>Help</a></li>
  %>
-    <li><a href='/contact/'>Contact Us</a></li>
+    <li><a href='/contact/'><%= t :contact_us %></a></li>
    </ul>
   </div>
   <div id='main'>
@@ -56,7 +56,7 @@
   </div>
  </div>
 
-<footer><div>This website is copyright ©2014 Martin McCarthy, Dave White, Roger Whiteway. iStockphoto®, iStock® are trademarks of iStockphoto LP. Lightbox thumbnail images are the property of the various artists contributing to this website.</div></footer>
+<footer><div><%= t :global_copyright %></div></footer>
   <% if content_for? :for_locationmaps_body %>
     <%= yield :for_locationmaps_body %>
   <% end %>
