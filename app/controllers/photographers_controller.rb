@@ -5,28 +5,31 @@ class PhotographersController < ApplicationController
   # GET /photographers
   # GET /photographers.json
   def index
+    set_countries
     @photographers = Photographer.all
   end
 
   # GET /photographers/1
   # GET /photographers/1.json
   def show
+    set_countries
   end
 
   # GET /photographers/new
   def new
+    set_countries
     @photographer = Photographer.new
-    @countries=["England","Northern Ireland","Scotland","Wales","Eire"]
   end
 
   # GET /photographers/1/edit
   def edit
-    @countries=["England","Northern Ireland","Scotland","Wales","Eire"]
+    set_countries
   end
 
   # POST /photographers
   # POST /photographers.json
   def create
+    set_countries
     @photographer = Photographer.new(photographer_params)
 
     respond_to do |format|
@@ -43,6 +46,7 @@ class PhotographersController < ApplicationController
   # PATCH/PUT /photographers/1
   # PATCH/PUT /photographers/1.json
   def update
+    set_countries
     respond_to do |format|
       if @photographer.update(photographer_params)
         format.html { redirect_to @photographer, notice: 'Photographer was successfully updated.' }
@@ -75,4 +79,9 @@ class PhotographersController < ApplicationController
     def photographer_params
       params.require(:photographer).permit(:name, :description, :website, :phone, :email, :istock_name, :istock_userid, :password, :city, :country, :locationspecifier, :avatar)
     end
+    
+    def set_countries
+      @countries=["England","Northern Ireland","Scotland","Wales","Eire"]
+    end
+
 end
