@@ -2,7 +2,7 @@
 <html>
 <head>
   <link href='http://fonts.googleapis.com/css?family=Paprika|Roboto&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  <title>British Stock</title>
+  <title><%= t :global_web_title %></title>
   <% if content_for? :for_locationmaps_head %>
     <%= yield :for_locationmaps_head %>
   <% end %>
@@ -16,8 +16,8 @@
 <body class='<%= controller.controller_name %>'>
  <% if @logged_in_as %>
     <div id='loggedin'>
-      <div id='who'>Signed in as <%= @logged_in_as %>
-        <%= button_to 'Sign out', logout_path, method: :delete %>
+      <div id='who'><%= t :signed_in_as %> <%= @logged_in_as %>
+        <%= button_to t(:sign_out), logout_path, method: :delete %>
       </div>
     </div>
  <% end %>
