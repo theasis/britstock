@@ -24,4 +24,16 @@
  .list_line_odd {
   background: #f0f0f0;
  }
+ .pending {
+   background: #ffffd0;
+   border: 1px solid red;
+ }
+ .deleted {
+   background: #ffb0b0;
+   border: 1px solid red;
+ }
+ .rejected {
+   background: #ffe0d0;
+   border: 1px solid red;
+ }
 }

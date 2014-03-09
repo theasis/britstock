@@ -1,7 +1,7 @@
 class ClientController < ApplicationController
   skip_before_action :authorize
   def index
-    @photographers = Photographer.order(:name)
+    @photographers = Photographer.where(state: 'active').order(:name)
   end
   
   def done
@@ -13,9 +13,9 @@ class ClientController < ApplicationController
   end
  
   def pre_location
-    @photographers = Photographer.order(:locationspecifier)
-    @cities = Photographer.select(:city).distinct
-    @regions = Photographer.select(:locationspecifier).distinct
+    @photographers = Photographer.where(state: 'active').order(:locationspecifier)
+    @cities = Photographer.select(:city).distinct.where(state: 'active')
+    @regions = Photographer.select(:locationspecifier).distinct.where(state: 'active')
     markers = Marker.all
     marker_lookup = Hash[ markers.map{ |m| [m.label,{:lat => m.latitude, :lng => m.longitude}]}]
     @hash = Gmaps4rails.build_markers(@regions) do |region, marker|
@@ -39,10 +39,10 @@ class ClientController < ApplicationController
 
   def location
     pre_location
-	@countries = Photographer.select(:country).distinct.order(:country)
+	@countries = Photographer.select(:country).distinct.where(state: 'active').order(:country)
 	@per_country = {}
 	@countries.each do |c|
-	  @per_country[c.country] = Photographer.where(country: c.country).order(:locationspecifier)
+	  @per_country[c.country] = Photographer.where(country: c.country).where(state: 'active').order(:locationspecifier)
 	end
   end
   
