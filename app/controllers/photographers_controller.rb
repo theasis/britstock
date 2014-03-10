@@ -1,5 +1,5 @@
 class PhotographersController < ApplicationController
-  before_action :authorize
+  before_action :authorize, :except => [:application]
   before_action :set_photographer, only: [:show, :edit, :update, :destroy]
 
 
@@ -21,6 +21,13 @@ class PhotographersController < ApplicationController
   def new
     set_countries
     @photographer = Photographer.new
+  end
+
+  # GET /photographers/application
+  def application
+    set_countries
+    @photographer = Photographer.new
+    @application = true
   end
 
   # GET /photographers/1/edit

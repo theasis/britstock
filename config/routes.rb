@@ -27,6 +27,7 @@ Britstock::Application.routes.draw do
 
   get "client/index"
   resources :photographers
+  get "application", to: "photographers#application"
 
   get "client/:id", to: "client#show"
   get "client/istocklightbox/:lbid", to: "client#istocklightbox"
