@@ -1,7 +1,8 @@
-<%= form_for(@photographer, :html => { :multipart => true } ) do |f| %>
+<%= sanitize( t :application_form_blurb ) %>
+<%= form_for(@photographer, :html => { :multipart => true }, :url => {:action => "application"} ) do |f| %>
   <% if @photographer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@photographer.errors.count, "error") %> prohibited this photographer from being saved:</h2>
+      <h2><%= pluralize(@photographer.errors.count, "error") %> <%= t :application_errors %>:</h2>
 
       <ul>
       <% @photographer.errors.full_messages.each do |msg| %>
@@ -104,6 +105,22 @@
     <%= image_tag @photographer.avatar.url %>
       </td>
     </tr>
+    <% for i in 1..5 %>
+      <tr>
+        <td class="field">
+          <label><%= t :application_form_label_lightbox %> <%= i %></label>
+        </td>
+        <td>
+          <input type='text' name='lightbox_title_<%= i %>' value='<%= t :application_form_label_lightbox_title %>' />
+        </td>
+        <td>
+          <input type='text' name='lightbox_number_<%= i %>' value='<%= t :application_form_label_lightbox_number %>' />
+        </td>
+        <td>
+          <input type='text' name='lightbox_image_<%= i %>' value='<%= t :application_form_label_lightbox_image %>' />
+        </td>
+      </tr>
+    <% end %>
 </table>
   <div class="actions">
     <%= f.submit t(:application_form_label_apply) %>

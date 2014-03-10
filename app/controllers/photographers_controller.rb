@@ -1,5 +1,5 @@
 class PhotographersController < ApplicationController
-  before_action :authorize, :except => [:application]
+  before_action :authorize, :except => [:application, :application_sent, :apply]
   before_action :set_photographer, only: [:show, :edit, :update, :destroy]
 
 
@@ -30,6 +30,10 @@ class PhotographersController < ApplicationController
     @application = true
   end
 
+  # GET /photographers/application_sent
+  def application_sent
+  end
+
   # GET /photographers/1/edit
   def edit
     set_countries
@@ -49,6 +53,21 @@ class PhotographersController < ApplicationController
       else
         format.html { render action: 'new' }
         format.json { render json: @photographer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /apply
+  def apply
+    set_countries
+    params[:photographer].merge!(:state=>'pending')
+    @photographer = Photographer.new(photographer_params)
+
+    respond_to do |format|
+      if @photographer.save
+        format.html { redirect_to '/application_sent' }
+      else
+        format.html { render action: 'application' }
       end
     end
   end
