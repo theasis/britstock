@@ -8,7 +8,7 @@
 <%   url=website.starts_with?('http') ? website : 'http://'+website %>
 <tr>
 <td>w:</td><td>
-<%= link_to website, url, :title=>t(:personal_website), :target => 'focalhero_external' %>
+<%= link_to website, url, :title=>t(:personal_website_tooltip), :target => 'focalhero_external' %>
 </td>
 </tr>
 <% end %>
