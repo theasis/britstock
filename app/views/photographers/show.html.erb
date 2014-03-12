@@ -60,5 +60,9 @@
   <%= @photographer.country %>
 </p>
 
+<% @lightboxes.each do |lb| %>
+  <div>Lightbox <%= lb[:istockid] %> <%= lb[:name] %></div>
+<% end %>
+
 <%= link_to 'Edit', edit_photographer_path(@photographer) %> |
 <%= link_to 'Back', photographers_path %>

@@ -15,6 +15,7 @@ class PhotographersController < ApplicationController
   def show
     set_countries
     set_states
+    @lightboxes = Lightboxes.where(photographer_id: params[:id])
   end
 
   # GET /photographers/new
