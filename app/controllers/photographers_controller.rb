@@ -133,7 +133,8 @@ class PhotographersController < ApplicationController
       lb_id=params["lightbox_number_"+lb_index].strip
       lb_image=params["lightbox_image_"+lb_index].strip
       if title.length>0 && /^[0-9]+$/.match(lb_id) && /^[0-9]+$/.match(lb_image)
-        Lightbox.new(:photographer_id => photographer_id, :istockid => lb_id, :name => title, :exampleimage => lb_image)
+        lb=Lightbox.new(:photographer_id => photographer_id, :istockid => lb_id, :name => title, :exampleimage => lb_image)
+        lb.save
         return 1
       end
       return 0
