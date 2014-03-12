@@ -105,19 +105,27 @@
     <%= image_tag @photographer.avatar.url %>
       </td>
     </tr>
+  </table>
+  <table>
+    <tr>
+      <th></th>
+      <th><%= t :application_form_label_lightbox_title %> <%= image_tag 'huh-2.png', :title => t(:application_form_info_lightbox_title) %></th>
+      <th><%= t :application_form_label_lightbox_number %> <%= image_tag 'huh-2.png', :title => t(:application_form_info_lightbox_number) %></th>
+      <th><%= t :application_form_label_lightbox_image %> <%= image_tag 'huh-2.png', :title => t(:application_form_info_lightbox_image) %></th>
+    </tr>
     <% for i in 1..5 %>
       <tr>
         <td class="field">
           <label><%= t :application_form_label_lightbox %> <%= i %></label>
         </td>
         <td>
-          <input type='text' name='lightbox_title_<%= i %>' value='<%= t :application_form_label_lightbox_title %>' />
+          <input type='text' name='lightbox_title_<%= i %>' />
         </td>
         <td>
-          <input type='text' name='lightbox_number_<%= i %>' value='<%= t :application_form_label_lightbox_number %>' />
+          <input type='text' name='lightbox_number_<%= i %>' />
         </td>
         <td>
-          <input type='text' name='lightbox_image_<%= i %>' value='<%= t :application_form_label_lightbox_image %>' />
+          <input type='text' name='lightbox_image_<%= i %>' />
         </td>
       </tr>
     <% end %>

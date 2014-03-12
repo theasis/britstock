@@ -65,6 +65,10 @@ class PhotographersController < ApplicationController
 
     respond_to do |format|
       if @photographer.save
+        lightboxes=0
+        for i in 1..5 do
+          lightboxes += 1 if create_lightbox i, @photographer.id
+        end
         format.html { redirect_to '/application_sent' }
       else
         format.html { render action: 'application' }
@@ -110,6 +114,10 @@ class PhotographersController < ApplicationController
     def photographer_params
       params.require(:photographer).permit(:name, :description, :website, :phone, :email, :istock_name, :istock_userid, :password, :city, :country, :locationspecifier, :avatar, :state)
     end
+
+    def lightbox_params
+      params.require(:lightbox_title_1,:lightbox_number_1,:lightbox_image_1).permit(:lightbox_title_2,:lightbox_number_2,:lightbox_image_2,:lightbox_title_3,:lightbox_number_3,:lightbox_image_3,:lightbox_title_4,:lightbox_number_4,:lightbox_image_4,:lightbox_title_5,:lightbox_number_5,:lightbox_image_5)
+    end
     
     def set_countries
       @countries=["England","Northern Ireland","Scotland","Wales","Eire"]
@@ -117,5 +125,17 @@ class PhotographersController < ApplicationController
 
     def set_states
       @photographer_states=["active","pending","deleted","rejected"]
+    end
+
+    def create_lightbox(lb_number, photographer_id)
+      lb_index=lb_number.to_s
+      title=params["lightbox_title_"+lb_index].strip
+      lb_id=params["lightbox_number_"+lb_index].strip
+      lb_image=params["lightbox_image_"+lb_index].strip
+      if title.length>0 && /^[0-9]+$/.match(lb_id) && /^[0-9]+$/.match(lb_image)
+        Lightbox.new(:photographer_id => photographer_id, :istockid => lb_id, :name => title, :exampleimage => lb_image)
+        return 1
+      end
+      return 0
     end
 end
