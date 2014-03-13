@@ -61,7 +61,7 @@
 </p>
 
 <% @lightboxes.each do |lb| %>
-  <div>Lightbox <%= lb[:istockid] %> <%= lb[:name] %></div>
+  <div>Lightbox <%= link_to lb[:name], "http://www.istockphoto.com/search/lightbox/"+lb[:istockid].to_s, :target => '_blank' %></div>
 <% end %>
 
 <%= link_to 'Edit', edit_photographer_path(@photographer) %> |

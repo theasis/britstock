@@ -1,3 +1,4 @@
+<div id='application_form'>
 <%= sanitize( t :application_form_blurb ) %>
 <%= form_for(@photographer, :html => { :multipart => true }, :url => {:action => "application"} ) do |f| %>
   <% if @photographer.errors.any? %>
@@ -15,13 +16,16 @@
   <div class='optional'>
     <%= sanitize(t :application_form_optional_fields_blurb) %>
   </div>
+  <div class='required'>
+    <%= sanitize(t :application_form_required_fields_blurb) %>
+  </div>
   <table>
     <tr>
       <td class="field">
         <%= f.label :name, t(:application_form_label_name) %>:
       </td>
       <td>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :class => 'required' %>
       </td>
     </tr>
     <tr>
@@ -29,7 +33,7 @@
           <%= f.label :istock_name, t(:application_form_label_istockname) %>:
         </td>
         <td>
-    <%= f.text_field :istock_name %>
+    <%= f.text_field :istock_name, :class => 'required' %>
   </td>
 </tr>
     <tr>
@@ -37,7 +41,7 @@
     <%= f.label :istock_userid, t(:application_form_label_istockid) %>:
       </td>
       <td>
-    <%= f.number_field :istock_userid %>
+    <%= f.number_field :istock_userid, :class => 'required' %>
       </td>
     </tr>
     <tr>
@@ -61,7 +65,7 @@
     <%= f.label :email, t(:application_form_label_email) %>:
       </td>
       <td>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => 'required' %>
       </td>
     </tr>
     <tr>
@@ -69,7 +73,7 @@
     <%= f.label :city, t(:application_form_label_city) %>:
       </td>
       <td>
-    <%= f.text_field :city %>
+    <%= f.text_field :city, :class => 'required' %>
       </td>
     </tr>
     <tr>
@@ -77,7 +81,7 @@
     <%= f.label :locationspecifier, t(:application_form_label_locationspecifier) %>:
       </td>
       <td>
-    <%= f.text_field :locationspecifier %>
+    <%= f.text_field :locationspecifier, :class => 'required' %>
       </td>
     </tr>
     <tr>
@@ -93,7 +97,7 @@
     <%= f.label :description, t(:application_form_label_bio) %>:
       </td>
       <td>
-    <%= f.text_area :description, :value=>"I have been an iStock member since", rows:6 %>
+    <%= f.text_area :description, :value=>"I have been an iStock member since", :class => 'required', rows:6, cols:60 %>
       </td>
     </tr>
     <tr>
@@ -119,13 +123,13 @@
           <label><%= t :application_form_label_lightbox %> <%= i %></label>
         </td>
         <td>
-          <input type='text' name='lightbox_title_<%= i %>' />
+          <input type='text' name='lightbox_title_<%= i %>' <% if i==1 %> class='required' <% end %> />
         </td>
         <td>
-          <input type='text' name='lightbox_number_<%= i %>' />
+          <input type='text' name='lightbox_number_<%= i %>' <% if i==1 %> class='required' <% end %> />
         </td>
         <td>
-          <input type='text' name='lightbox_image_<%= i %>' />
+          <input type='text' name='lightbox_image_<%= i %>' <% if i==1 %> class='required' <% end %> />
         </td>
       </tr>
     <% end %>
@@ -134,3 +138,4 @@
     <%= f.submit t(:application_form_label_apply) %>
   </div>
 <% end %>
+</div>
