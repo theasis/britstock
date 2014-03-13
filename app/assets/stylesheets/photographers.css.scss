@@ -47,6 +47,13 @@
  .required {
    background: #e0e0ff;
  }
+ div.required {
+   font-weight: bold;
+   padding: 0.5em;
+   border: 1px solid blue;
+   margin-top: 1ex;
+   margin-bottom: 1ex;
+ }
 }
 #application_form {
   width: 800px;
