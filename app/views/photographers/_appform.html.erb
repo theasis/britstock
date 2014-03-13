@@ -1,0 +1,141 @@
+<div id='application_form'>
+<%= sanitize( t :application_form_blurb ) %>
+<%= form_for(@photographer, :html => { :multipart => true }, :url => {:action => "application"} ) do |f| %>
+  <% if @photographer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@photographer.errors.count, "error") %> <%= t :application_errors %>:</h2>
+
+      <ul>
+      <% @photographer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='optional'>
+    <%= sanitize(t :application_form_optional_fields_blurb) %>
+  </div>
+  <div class='required'>
+    <%= sanitize(t :application_form_required_fields_blurb) %>
+  </div>
+  <table>
+    <tr>
+      <td class="field">
+        <%= f.label :name, t(:application_form_label_name) %>:
+      </td>
+      <td>
+        <%= f.text_field :name, :class => 'required' %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+          <%= f.label :istock_name, t(:application_form_label_istockname) %>:
+        </td>
+        <td>
+    <%= f.text_field :istock_name, :class => 'required' %>
+  </td>
+</tr>
+    <tr>
+      <td class="field">
+    <%= f.label :istock_userid, t(:application_form_label_istockid) %>:
+      </td>
+      <td>
+    <%= f.number_field :istock_userid, :class => 'required' %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+    <%= f.label :website, optional(:application_form_label_website) %>:
+      </td>
+      <td>
+    <%= f.text_field :website %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+        <%= f.label :phone, optional(:application_form_label_phone) %>:
+      </td>
+      <td>
+    <%= f.text_field :phone %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+    <%= f.label :email, t(:application_form_label_email) %>:
+      </td>
+      <td>
+    <%= f.text_field :email, :class => 'required' %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+    <%= f.label :city, t(:application_form_label_city) %>:
+      </td>
+      <td>
+    <%= f.text_field :city, :class => 'required' %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+    <%= f.label :locationspecifier, t(:application_form_label_locationspecifier) %>:
+      </td>
+      <td>
+    <%= f.text_field :locationspecifier, :class => 'required' %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+    <%= f.label :country, t(:application_form_label_country) %>:
+      </td>
+      <td>
+    <%= f.select :country, options_for_select(@countries,f.object.country) %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+    <%= f.label :description, t(:application_form_label_bio) %>:
+      </td>
+      <td>
+    <%= f.text_area :description, :value=>"I have been an iStock member since", :class => 'required', rows:6, cols:60 %>
+      </td>
+    </tr>
+    <tr>
+      <td class="field">
+    <%= f.label t(:application_form_label_avatar) %>:
+      </td>
+      <td>
+    <%= f.file_field :avatar %>
+    <%= image_tag @photographer.avatar.url %>
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <th></th>
+      <th><%= t :application_form_label_lightbox_title %> <%= image_tag 'huh-2.png', :title => t(:application_form_info_lightbox_title) %></th>
+      <th><%= t :application_form_label_lightbox_number %> <%= image_tag 'huh-2.png', :title => t(:application_form_info_lightbox_number) %></th>
+      <th><%= t :application_form_label_lightbox_image %> <%= image_tag 'huh-2.png', :title => t(:application_form_info_lightbox_image) %></th>
+    </tr>
+    <% for i in 1..5 %>
+      <tr>
+        <td class="field">
+          <label><%= t :application_form_label_lightbox %> <%= i %></label>
+        </td>
+        <td>
+          <input type='text' name='lightbox_title_<%= i %>' <% if i==1 %> class='required' <% end %> />
+        </td>
+        <td>
+          <input type='text' name='lightbox_number_<%= i %>' <% if i==1 %> class='required' <% end %> />
+        </td>
+        <td>
+          <input type='text' name='lightbox_image_<%= i %>' <% if i==1 %> class='required' <% end %> />
+        </td>
+      </tr>
+    <% end %>
+</table>
+  <div class="actions">
+    <%= f.submit t(:application_form_label_apply) %>
+  </div>
+<% end %>
+</div>

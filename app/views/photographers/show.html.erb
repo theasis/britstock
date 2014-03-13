@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>State:</strong>
+  <%= @photographer.state %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @photographer.description %>
 </p>
@@ -54,6 +59,10 @@
   <strong>Country:</strong>
   <%= @photographer.country %>
 </p>
+
+<% @lightboxes.each do |lb| %>
+  <div>Lightbox <%= link_to lb[:name], "http://www.istockphoto.com/search/lightbox/"+lb[:istockid].to_s, :target => '_blank' %></div>
+<% end %>
 
 <%= link_to 'Edit', edit_photographer_path(@photographer) %> |
 <%= link_to 'Back', photographers_path %>

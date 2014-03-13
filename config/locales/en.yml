@@ -1,23 +1,49 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  global_web_title: "British Stock"
+  global_title: "FOCALHERO"
+  global_subtitle: "British Stock Photography"
+  global_tagline_1: "Location photography by local photographers"
+  global_tagline_2: "Available royalty-free from iStock"
+  global_copyright: "This website is copyright ©2014 Martin McCarthy, Dave White, Roger Whiteway. iStockphoto® and iStock® are trademarks of iStockphoto LP. Lightbox thumbnail images are the property of the various artists contributing to this website."
+  map_title: "Find your local focal hero"
+  locations: "Locations"
+  photographers: "Photographers"
+  edit_photographers: "Edit Photogs"
+  edit_lightboxes: "Edit Lightboxes"
+  edit_markers: "Edit Markers"
+  about_us: "About Us"
+  privacy_policy: "Privacy Policy"
+  user_agreement: "User Agreement"
+  contact_us: "Contact Us"
+  personal_website_tooltip: "Personal web site"
+  istock_portfolio: "iStock portfolio"
+  done: "Done"
+  signed_in_as: "Signed in as"
+  sign_out: "Sign out"
+  apply_to_join: "Apply To Join"
+  application_form_title: "Apply to be listed on FocalHero"
+  application_form_label_name: "Your real name"
+  application_form_label_istockname: "Your username on iStock"
+  application_form_label_avatar: "A photo of yourself (100x128 is the perfect size)"
+  application_form_label_bio: "Your mini biography/description"
+  application_form_label_website: "Your personal website"
+  application_form_label_phone: "Your contact phone number"
+  application_form_label_optional_field: "(Optional)"
+  application_form_label_email: "Your contact email"
+  application_form_label_istockid: "Your iStock User ID number"
+  application_form_label_city: "The city where you live (or nearest city/town)"
+  application_form_label_locationspecifier: "County (or Region or Island etc.)"
+  application_form_label_country: "Country"
+  application_form_label_lightbox: "Lightbox"
+  application_form_label_lightbox_title: "Lightbox Title"
+  application_form_label_lightbox_number: "Lightbox Number"
+  application_form_label_lightbox_image: "Image File Number"
+  application_form_label_apply: "Submit my application"
+  application_form_info_lightbox_title: "A very short descriptive title for your lightbox, e.g.: 'Glasgow' or 'Wigan High Street'"
+  application_form_info_lightbox_number: "If your lightbox URL is http://www.istockphoto.com/search/lightbox/12345 or http://www.istockphoto.com/search/lightbox/12345#3e4578ed then your lightbox number is 12345. Just numbers. Nothing from before the last '/', nothing from after the '#'"
+  application_form_info_lightbox_image: "The file number of a representative image in the lightbox. If your file URL is http://www.istockphoto.com/stock-photo-12345-glasgow.php or http://www.istockphoto.com/stock-photo-12345-glasgow.php?st=891a023 then your image number is 12345. Just the numbers from immediately after 'stock-photo-' or 'stock-video-' etc."
+  application_form_optional_fields_blurb: "Please be aware that <b>ALL</b> the information you enter here will be made public. That is the point of it. If you do not want particular optional details - such as your phone number - to be public, simply do not enter that data into the form. Please do <b>NOT</b> enter such data as '<i>n/a</i>' or '<i>not applicable</i>' or somesuch; just leave it blank.<br>Thanks!"
+  application_form_required_fields_blurb: "Fields with a pale blue background are required."
+  application_form_blurb: "<p>FocalHero is a web site to help local businesses find locally-shot work by iStock contributors.</p><p>As a contributor, you compile lightboxes on iStock with work from the ONE area where you are based. This is the work that should have the most interest for businesses that are <i>local to you</i>. You then generate your own local advertising aimed at local businesses - as much as you want, promoting your own page on this web site.</p>"
+  application_sent: "Thanks - your application has been saved. We'll take a look at it very soon.<br>If you haven't already done so, please email us at focalhero@focalhero.co.uk and let us know. We're a couple of guys doing this in our own time, not a faceless corporation - so please say hello!<br>Cheers."
+  application_errors: "in your application"

@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :state %><br>
+    <%= f.select :state, options_for_select(@photographer_states,f.object.state) %>
+  </div>
+  <div class="field">
     <%= f.label :name, "Real name" %><br>
     <%= f.text_field :name %>
   </div>

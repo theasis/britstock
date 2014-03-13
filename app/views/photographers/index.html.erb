@@ -3,7 +3,7 @@
 <table>
   <tbody>
     <% @photographers.each do |photographer| %>
-      <tr class='<%= cycle('list_line_odd','list_line_even') %>'>
+      <tr class='<%= cycle('list_line_odd','list_line_even') %> <%= photographer.state %>'>
         <td><%= photographer.name %>
         <br><i><%= link_to photographer.istock_name, "http://www.istockphoto.com/user_view.php?id="+(photographer.istock_userid||0).to_s %></i>
 	<br><%= photographer.city+", "+photographer.country %>
