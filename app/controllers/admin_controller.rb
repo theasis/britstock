@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  skip_before_action :authorize
   def index
   end
 
