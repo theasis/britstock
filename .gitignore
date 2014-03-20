@@ -20,6 +20,7 @@ istockapikey
 paypal_config.rb
 google_config.rb
 /config/paypal.yml
+google_analytics.rb
 
 app/assets/images/banner-01.jpg
 app/assets/images/buttonGreenBg1.png

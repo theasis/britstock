@@ -1,5 +1,7 @@
 class ClientController < ApplicationController
   skip_before_action :authorize
+  helper_method :google_analytics_code
+
   def index
     @photographers = Photographer.where(state: 'active').order(:name)
   end
@@ -88,6 +90,10 @@ class ClientController < ApplicationController
 
     def set_lightboxes
       @lbs = Lightbox.where(photographer_id: @photographer.id)
+    end
+
+    def google_analytics_code
+      eval(File.open(Rails.root.join('google_analytics.rb').to_s).read).html_safe
     end
 
 end

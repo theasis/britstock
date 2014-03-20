@@ -1,0 +1,7 @@
+# fill in the <script> tags with your Google Analytics code if you have
+# a GA account and want to track site usage
+#
+ga_tracking_code = <<-GA_TRACKING_CODE
+<script>
+</script>
+GA_TRACKING_CODE
