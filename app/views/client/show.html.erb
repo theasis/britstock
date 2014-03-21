@@ -33,7 +33,6 @@
 <% @lbs.each do |lb| %>
 <div style='height:230px;' class='lightbox'>
 <div class='lb_name'><%= lb.name %><span class='totalitems'></span></div>
-<a href='http://www.istockphoto.com/search/lightbox/<%= lb.istockid %>/' target='focalhero_external'>
 <section class='lbthumb_container cell1'>
 <img data-lightboxid='<%= lb.istockid %>' class='lb_image example_image' src='http://i.istockimg.com/file_thumbview_approve/<%= lb.exampleimage %>/3/stock-photo-<%= lb.exampleimage %>-.jpg' />
 </section>
@@ -42,18 +41,35 @@
 </section>
 <section class='lbthumb_container cell3'></section>
 <section class='lbthumb_container cell4'></section>
+<a href='http://www.istockphoto.com/search/lightbox/<%= lb.istockid %>/' target='focalhero_external'>
+<section><button class='collection'><%= sanitize(t :lightbox_button_label) %></button></section>
 </a>
 </div>
 <% end %>
 <script>
+function activate() {
+  var me=$(this);
+  me.addClass("active");
+}
+function deactivate() {
+  var me=$(this);
+  me.removeClass("active");
+}
 function updateLightbox(divEl,cellNo,images,pointer,slow) {
   slow = cellNo==3?true:slow;
   if (images.length>0) {
     var imgNo=images[pointer%images.length];
     var target=$(".cell"+(cellNo%4+1),divEl);
+    if ($("img",target).hasClass("active")) {
+      cellNo+=1;
+      target=$(".cell"+((cellNo)%4+1),divEl);
+    }      
     var fn=function(){
       var img=$("<img class='lb_image' src='http://i.istockimg.com/file_thumbview_approve/"+imgNo+"/3/stock-photo-"+imgNo+"-.jpg' />");
-      target.html(img.fadeIn(200));
+      img.hover(activate,deactivate);
+      var link=$("<a href='http://www.istockphoto.com/stock-photo-"+imgNo+"-.php' target='focalhero_external'>");
+      link.html(img.fadeIn(200));
+      target.html(link);
     };
     var targetImg=target.find("img");
     if (targetImg.length>0) {

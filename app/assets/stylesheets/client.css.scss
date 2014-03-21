@@ -140,14 +140,21 @@ div#list {
   }
 }
 img.lb_image {
- padding: 8px;
+ padding: 4px;
+ margin: 4px;
+ margin-top: 0;
+ box-shadow: none;
+}
+img.lb_image.active {
+ margin-top: -5px;
+ box-shadow: 0 3px 7px #888;
 }
 div.lightbox {
  border: 1px #819b1a dotted;
  background: #f8fff0;
  margin-top: 4px;
  padding: 8px;
- width: 800px;
+ width: 890px;
  a:hover {
   background: #f8fff0;
  }
@@ -161,6 +168,17 @@ div.lightbox {
     img {
       margin: auto;
     }
+ }
+ button.collection {
+  font-size: 80%;
+  font-weight: bold;
+  background-color: #819b1a;
+  cursor: pointer;
+  margin-left: 8px;
+  color: white;
+ }
+ button.collection:hover {
+  border: #81cf1a solid 2px;
  }
 }
 div.lb_name {

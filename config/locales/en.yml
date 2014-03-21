@@ -47,3 +47,4 @@ en:
   application_form_blurb: "<p>FocalHero is a web site to help local businesses find locally-shot work by iStock contributors.</p><p>As a contributor, you compile lightboxes on iStock with work from the ONE area where you are based. This is the work that should have the most interest for businesses that are <i>local to you</i>. You then generate your own local advertising aimed at local businesses - as much as you want, promoting your own page on this web site.</p>"
   application_sent: "Thanks - your application has been saved. We'll take a look at it very soon.<br>If you haven't already done so, please email us at focalhero@focalhero.co.uk and let us know. We're a couple of guys doing this in our own time, not a faceless corporation - so please say hello!<br>Cheers."
   application_errors: "in your application"
+  lightbox_button_label: "View<br>This<br>Collection"
