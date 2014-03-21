@@ -146,7 +146,7 @@ img.lb_image {
  box-shadow: none;
 }
 img.lb_image.active {
- margin-top: -5px;
+ margin-top: -5px !important;
  box-shadow: 0 3px 7px #888;
 }
 div.lightbox {
