@@ -4,7 +4,7 @@ class LightboxesController < ApplicationController
   # GET /lightboxes
   # GET /lightboxes.json
   def index
-    @lightboxes = Lightbox.find(:all, :order => "photographer_id")
+    @lightboxes = Lightbox.joins("INNER JOIN photographers ON photographers.id=lightboxes.photographer_id").order(:photographer_id)
     @photographers = Photographer.all
   end
 
