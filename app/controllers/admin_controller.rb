@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   skip_before_action :authorize
   def index
+    eval(File.open(Rails.root.join('google_config.rb').to_s).read)
   end
 
   def new
