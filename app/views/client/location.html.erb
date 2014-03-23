@@ -65,6 +65,6 @@ function showCountry(country) {
  $("div.country_div").hide(300);
  $("#country_"+country).show(300);
 }
-showCountry("England");
+showCountry("<%= $focalhero_default_country %>");
 </script>
 <%= google_analytics_code %>

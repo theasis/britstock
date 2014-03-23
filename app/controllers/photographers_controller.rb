@@ -121,7 +121,7 @@ class PhotographersController < ApplicationController
     end
     
     def set_countries
-      @countries=["England","Northern Ireland","Scotland","Wales","Eire"]
+      @countries=$focalhero_countries
     end
 
     def set_states
