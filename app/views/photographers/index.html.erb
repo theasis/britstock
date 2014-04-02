@@ -24,3 +24,7 @@
 <br>
 
 <%= link_to 'New Photographer', new_photographer_path, class: 'ctlBtn1' %>
+<button id='show_deleted_photographers'>Show Deleted</button>
+<script>
+$("#show_deleted_photographers").click(function(){$(".deleted").css("display","table-row");});
+</script>
