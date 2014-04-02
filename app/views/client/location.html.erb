@@ -42,14 +42,14 @@
 <% content_for :for_locationmaps_body do %>
 <script type='text/javascript'>
   handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function() {
+  handler.buildMap({ provider: { maxZoom: <%= @maxZoom %>, minZoom: <%= @minZoom %>, zoom: <%= @zoom %> }, internal: {id: 'map'}}, function() {
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
   });
 $(document).on('page:load',function() {
   handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function() {
+  handler.buildMap({ provider: { maxZoom: <%= @maxZoom %>, minZoom: <%= @minZoom %>, zoom: <%= @zoom %> }, internal: {id: 'map'}}, function() {
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();

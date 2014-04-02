@@ -15,6 +15,9 @@ class ClientController < ApplicationController
   end
  
   def pre_location
+    @maxZoom = 9
+    @minZoom = 5
+    @zoom = 7
     @photographers = Photographer.where(state: 'active').order(:locationspecifier)
     @cities = Photographer.select(:city).distinct.where(state: 'active')
     @regions = Photographer.select(:locationspecifier).distinct.where(state: 'active')
