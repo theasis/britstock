@@ -79,7 +79,7 @@ function updateLightbox(divEl,cellNo,images,pointer,slow) {
     var fn=function(){
       var img=$("<img class='lb_image' src='http://i.istockimg.com/file_thumbview_approve/"+imgNo+"/3/stock-photo-"+imgNo+"-.jpg' />");
       img.hover(activate,deactivate);
-      var link=$("<a href='"+base+"http"+colon+"//www.istockphoto.com/stock-photo-"+imgNo+"-.php' target='focalhero_external'>");
+      var link=$("<a href='"+base+"http"+colon+"//www.istockphoto.com/stock-photo-"+imgNo+"-a.php' target='focalhero_external'>");
       link.html(img.fadeIn(200));
       target.html(link);
     };
