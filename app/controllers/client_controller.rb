@@ -89,9 +89,6 @@ class ClientController < ApplicationController
       if !@photographer.image || @photographer.image.length<2 then
         @photographer.image='britstock-logo1.png'
       end
-      if @photographer.linkconnectorid then
-        @linkconnectorurl="http://www.linkconnector.com/ta.php?lc=#{@photographer.linkconnectorid}"
-      end
     end
 
     def set_lightboxes

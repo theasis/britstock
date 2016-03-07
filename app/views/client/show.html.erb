@@ -2,14 +2,7 @@
 <div class='contact'>
 <table>
 <tr>
-  <td>i:</td><td>
-    <%
-        colon=@linkconnectorurl?"%3A":":"
-        questionmark=@linkconnectorurl?"%3F":"?"
-        cleanlink="http#{colon}//www.istockphoto.com/user_view.php#{questionmark}id=#{@photographer.istock_userid.to_s}"
-        link= @linkconnectorurl ? "#{@linkconnectorurl}&url=#{cleanlink}" : cleanlink
-      %>
-  <%= link_to @photographer.istock_name, link, :title => 'iStock user page', :target => 'focalhero_external' %></td>
+  <td>i:</td><td><%= link_to @photographer.istock_name, "http://www.istockphoto.com/user_view.php?id="+@photographer.istock_userid.to_s, :title => 'iStock user page', :target => 'focalhero_external' %></td>
 </tr>
 <% website=@photographer.website; if website && website.length>0 then %>
 <%   url=website.starts_with?('http') ? website : 'http://'+website %>
@@ -30,9 +23,7 @@
 </tr>
 <% end %>
 </table>
-<%  url="http#{colon}//www.istockphoto.com/search/portfolio/" %>
-<%  url=@linkconnectorurl ? "#{@linkconnectorurl}&url=#{url}" : url %>
-<%= link_to t(:istock_portfolio), url+@photographer.istock_userid.to_s, :target => 'focalhero_external' %>
+<%= link_to t(:istock_portfolio), "http://www.istockphoto.com/search/portfolio/"+@photographer.istock_userid.to_s, :target => 'focalhero_external' %>
 </div>
 <h2><%= @photographer.city+', '+@photographer.country %></h2>
 <div class='entry'>
@@ -50,15 +41,12 @@
 </section>
 <section class='lbthumb_container cell3'></section>
 <section class='lbthumb_container cell4'></section>
-<a href='<%= @linkconnectorurl ? @linkconnectorurl + "&url=" : "" %>http<%= colon %>//www.istockphoto.com/search/lightbox/<%= lb.istockid %>/' target='focalhero_external'>
+<a href='http://www.istockphoto.com/search/lightbox/<%= lb.istockid %>/' target='focalhero_external'>
 <section><button class='collection'><%= sanitize(t :lightbox_button_label) %></button></section>
 </a>
 </div>
 <% end %>
 <script>
-<%= sanitize "var colon='#{colon}';" %>
-<%= sanitize "var questionmark='#{questionmark}';" %>
-<%= sanitize("var base='" + (@linkconnectorurl ? @linkconnectorurl + "&url=" : "") + "';") %>
 function activate() {
   var me=$(this);
   me.addClass("active");
@@ -79,7 +67,7 @@ function updateLightbox(divEl,cellNo,images,pointer,slow) {
     var fn=function(){
       var img=$("<img class='lb_image' src='http://i.istockimg.com/file_thumbview_approve/"+imgNo+"/3/stock-photo-"+imgNo+"-.jpg' />");
       img.hover(activate,deactivate);
-      var link=$("<a href='"+base+"http"+colon+"//www.istockphoto.com/stock-photo-"+imgNo+"-a.php' target='focalhero_external'>");
+      var link=$("<a href='http://www.istockphoto.com/stock-photo-"+imgNo+"-a.php' target='focalhero_external'>");
       link.html(img.fadeIn(200));
       target.html(link);
     };
